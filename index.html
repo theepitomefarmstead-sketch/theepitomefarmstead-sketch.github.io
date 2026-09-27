@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript on GitHub Pages</title>
+    
+    <!-- Link to PyScript assets -->
+    <link rel="stylesheet" href="https://pyscript.net">
+    <script type="module" src="https://pyscript.net"></script>
+</head>
+<body>
+
+    <h1>Hello from PyScript!</h1>
+    
+    <!-- These elements will be targeted by our Python code -->
+    <div id="output-message"></div>
+    <div id="output-math"></div>
+
+    <!-- Define the Python environment configuration (for packages like numpy) -->
+    <script type="py" config>
+        {
+            "packages": ["numpy"]
+        }
+    </script>
+
+    <!-- Write your Python code here -->
+    <script type="py">
+        from pyscript import display
+        import numpy as np
+
+        # 1. Output a simple message
+        display("Python is running directly in your browser!", target="output-message")
+
+        # 2. Use numpy to do some quick math and display it
+        numbers = np.array([1, 2, 3, 4, 5])
+        squared = numbers ** 2
+        
+        display(f"Original array: {numbers}", target="output-math")
+        display(f"Squared array using NumPy: {squared}", target="output-math", append=True)
+    </script>
+
+</body>
+</html>
