@@ -41,15 +41,18 @@
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { color: var(--paper); font-family: Georgia, "Times New Roman", serif; font-size: 0.98rem; }
     .footer-note { margin: 0; font-size: 0.79rem; text-align: right; }
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
+      .page-shell { width: 100%; margin: 0; box-shadow: none; }
       .wrap { width: calc(100% - 36px); }
-      .site-header { min-height: 76px; }
-      .navigation { gap: 10px; }
-      .navigation a { font-size: 0.75rem; }
-      .navigation a:nth-child(4) { display: none; }
-      .brand-name { font-size: 0.92rem; }
-      .brand-mark { width: 37px; height: 37px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .site-header { min-height: 0; align-items: flex-start; flex-direction: column; gap: 16px; padding: 15px 0; }
+      .brand-name { font-size: 0.96rem; }
+      .brand-name span:last-child { font-size: 0.56rem; letter-spacing: 0.1em; }
+      .brand-mark { flex: 0 0 40px; width: 40px; height: 40px; }
+      .navigation { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 8px; }
+      .navigation a { display: inline-flex; min-height: 36px; align-items: center; padding: 6px 10px; border: 1px solid rgb(24 61 50 / 12%); border-radius: 999px; background: rgb(255 255 255 / 45%); font-size: 0.75rem; white-space: nowrap; }
+      main { min-height: 360px; padding: 42px 18px; }
+      .empty-state { padding: 36px 22px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 7px; }
       .footer-note { text-align: left; }
     }
   </style>
