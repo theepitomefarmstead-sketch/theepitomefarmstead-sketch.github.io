@@ -25,7 +25,7 @@ Add a target audience to the mission:
 
 ## Prompt 5
 
-In tech stack add that we use SQLite.
+In tech stack add that we use googlesheet as database stack .
 
 # Lesson 05 — Prompts
 
