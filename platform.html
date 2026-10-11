@@ -25,6 +25,7 @@
     .wrap { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
     .site-header { position: sticky; top: 0; z-index: 20; display: flex; width: min(1180px, calc(100% - 56px)); margin: 0 auto; min-height: 96px; align-items: center; justify-content: space-between; padding: 10px 20px; border-bottom: 1px solid rgb(24 61 50 / 8%); background: transparent; }
     .site-header::before { position: absolute; top: 0; bottom: 0; left: 50%; z-index: -1; width: 100vw; transform: translateX(-50%); background: #fff; content: ""; }
+    .site-header.is-scrolling-down::before { background: transparent; }
     .brand { display: inline-flex; align-items: center; gap: 14px; color: var(--forest); text-decoration: none; transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear; }
     .site-header.is-scrolling-down .brand { transform: translateY(-10px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; }
     .brand-mark { display: grid; width: 76px; height: 76px; flex: 0 0 76px; place-items: center; overflow: visible; border-radius: 50%; background: #f3f5ef; box-shadow: 0 0 0 1px rgb(24 61 50 / 10%); }
