@@ -728,7 +728,7 @@
         <h2 id="form-title">Request a CSA subscription</h2>
         <p class="form-intro">Share your preferences and we’ll get back to you about the next steps.</p>
 
-        <form id="csa-form" method="post" target="_blank">
+        <form id="csa-form" method="post">
           <div class="form-grid">
             <div class="field">
               <label for="name">Your name</label>
@@ -870,7 +870,7 @@
     if (/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(CSA_WEB_APP_URL)) {
       form.action = CSA_WEB_APP_URL;
       submitButton.disabled = false;
-      formStatus.textContent = "Your request will be emailed to the farm, and a confirmation will open in a new tab.";
+      formStatus.textContent = "Your request will be emailed to the farm. After submission, you’ll see a confirmation page.";
       formStatus.style.color = "var(--muted)";
     } else {
       form.addEventListener("submit", (event) => {
