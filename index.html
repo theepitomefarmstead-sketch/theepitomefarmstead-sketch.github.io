@@ -738,6 +738,179 @@
       padding-bottom: 18px;
     }
 
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: min(1180px, calc(100% - 56px));
+      margin: 0 auto;
+      min-height: 96px;
+      padding: 10px 20px;
+      border-bottom-color: rgb(24 61 50 / 8%);
+      background: transparent;
+    }
+
+    .site-header::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      transform: translateX(-50%);
+      background: #fff;
+      content: "";
+    }
+
+    .brand {
+      gap: 14px;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear;
+    }
+
+    .site-header.is-scrolling-down .brand {
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+    }
+
+    .brand-mark {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .brand-mark img {
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .brand-name span:last-child {
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle[aria-expanded="true"] {
+      background: #f1f4ef;
+    }
+
+    .menu-toggle svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .navigation {
+      display: flex;
+      position: static;
+      align-items: center;
+      gap: clamp(12px, 2vw, 28px);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .navigation a,
+    .navigation a:first-child,
+    .navigation a:nth-child(2) {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: #39463e;
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .navigation a:hover,
+    .navigation a:focus-visible,
+    .navigation a[aria-current="page"] {
+      background: #f2f5f1;
+      color: var(--forest);
+    }
+
+    .navigation .nav-cta {
+      margin-left: auto;
+      border-radius: 999px;
+      background: #1a73e8;
+      color: white;
+      padding: 10px 18px;
+    }
+
+    .navigation .nav-cta:hover,
+    .navigation .nav-cta:focus-visible {
+      background: #155fc0;
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        width: calc(100% - 36px);
+        min-height: 88px;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 14px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .navigation {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        z-index: 5;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid rgb(24 61 50 / 10%);
+        border-radius: 0 0 18px 18px;
+        background: #fff;
+        box-shadow: 0 20px 36px rgb(16 45 37 / 12%);
+      }
+
+      .navigation.is-open {
+        display: flex;
+      }
+
+      .navigation .nav-cta {
+        margin: 8px 0 0;
+        justify-content: center;
+      }
+    }
+
     .text-link {
       color: var(--forest);
       font-size: 0.9rem;
@@ -1357,12 +1530,15 @@
 
       .navigation {
         flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
         justify-content: flex-end;
         gap: 10px 16px;
       }
 
+      .navigation a:first-child,
       .navigation a:nth-child(2) {
-        display: inline;
+        display: flex;
       }
 
       .hero-panel {
@@ -1439,54 +1615,43 @@
       }
 
       .site-header {
-        min-height: 0;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 16px;
-        padding: 15px 0;
+        min-height: 76px;
+        align-items: center;
+        flex-direction: row;
+        gap: 0;
+        padding: 6px 0;
       }
 
       .brand {
-        gap: 10px;
-      }
-
-      .brand-name {
-        font-size: 0.96rem;
-      }
-
-      .brand-name span:last-child {
-        font-size: 0.56rem;
-        letter-spacing: 0.1em;
-      }
-
-      .brand-mark {
-        flex: 0 0 40px;
-        width: 40px;
-        height: 40px;
-      }
-
-      .navigation {
-        width: 100%;
-        justify-content: flex-start;
         gap: 8px;
       }
 
-      .navigation a,
-      .navigation a:first-child,
-      .navigation a:nth-child(2) {
-        display: inline-flex;
-        min-height: 36px;
-        align-items: center;
-        padding: 6px 10px;
-        border: 1px solid rgba(24, 61, 50, 0.12);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.45);
-        font-size: 0.75rem;
-        white-space: nowrap;
+      .brand-name {
+        font-size: 0.9rem;
       }
 
-      .navigation .nav-cta {
-        padding: 6px 10px;
+      .brand-name span:last-child {
+        font-size: 0.5rem;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-mark {
+        flex: 0 0 64px;
+        width: 64px;
+        height: 64px;
+      }
+
+      .navigation {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        width: auto;
+        padding: 12px;
+        border: 1px solid rgb(24 61 50 / 10%);
+        border-radius: 0 0 16px 16px;
+        background: #fff;
+        box-shadow: 0 20px 36px rgb(16 45 37 / 12%);
       }
 
       .hero-panel {
@@ -1689,8 +1854,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-shell">
-    <div class="wrap">
-      <header class="site-header">
+    <header class="site-header">
         <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
           <span class="brand-mark" aria-hidden="true">
             <img src="logo.png" alt="The Epitome Integrated Organic Farm logo">
@@ -1700,15 +1864,20 @@
             <span>Integrated Organic Farm</span>
           </span>
         </a>
-        <nav class="navigation" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+          </svg>
+        </button>
+        <nav class="navigation" id="main-navigation" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
+          <a href="design.html">Design</a>
           <a href="approach.html">Our approach</a>
           <a href="platform.html">The platform</a>
-          <a class="nav-cta" href="index.html#platform">Visit the farm</a>
+          <a class="nav-cta" href="index.html#vision">Explore the farm</a>
         </nav>
-      </header>
-    </div>
+    </header>
 
     <main id="main">
       <section class="hero-panel" aria-labelledby="hero-title">
@@ -1828,5 +1997,43 @@
       </div>
     </footer>
   </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+    const siteHeader = document.querySelector(".site-header");
+    let previousScrollY = window.scrollY;
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("is-open", !isExpanded);
+      siteHeader.classList.remove("is-scrolling-down");
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - previousScrollY) < 8) return;
+
+      const menuIsOpen = window.innerWidth <= 900 && menuToggle.getAttribute("aria-expanded") === "true";
+      const headerHasFocus = siteHeader.contains(document.activeElement);
+      siteHeader.classList.toggle(
+        "is-scrolling-down",
+        currentScrollY > siteHeader.offsetHeight &&
+          currentScrollY > previousScrollY &&
+          !menuIsOpen &&
+          !headerHasFocus
+      );
+      previousScrollY = currentScrollY;
+    }, { passive: true });
+  </script>
 </body>
 </html>

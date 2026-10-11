@@ -23,15 +23,21 @@
     }
     .page-shell { max-width: 1210px; margin: 32px auto; background: var(--paper); box-shadow: 0 30px 60px rgb(0 0 0 / 30%); }
     .wrap { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
-    .site-header { display: flex; min-height: 88px; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(24 61 50 / 12%); }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--forest); text-decoration: none; }
-    .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; overflow: hidden; border-radius: 50% 50% 44% 44%; background: var(--forest); }
-    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand-name { display: grid; font-family: Georgia, "Times New Roman", serif; font-size: 1.04rem; font-weight: 700; line-height: 1.05; }
-    .brand-name span:last-child { margin-top: 4px; color: var(--muted); font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 0.62rem; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; }
-    .navigation { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
-    .navigation a { color: #49564a; font-size: 0.88rem; font-weight: 600; text-decoration: none; }
-    .navigation a:hover, .navigation a:focus-visible { color: var(--clay); }
+    .site-header { position: sticky; top: 0; z-index: 20; display: flex; width: min(1180px, calc(100% - 56px)); margin: 0 auto; min-height: 96px; align-items: center; justify-content: space-between; padding: 10px 20px; border-bottom: 1px solid rgb(24 61 50 / 8%); background: transparent; }
+    .site-header::before { position: absolute; top: 0; bottom: 0; left: 50%; z-index: -1; width: 100vw; transform: translateX(-50%); background: #fff; content: ""; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; color: var(--forest); text-decoration: none; transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear; }
+    .site-header.is-scrolling-down .brand { transform: translateY(-10px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; }
+    .brand-mark { display: grid; width: 76px; height: 76px; flex: 0 0 76px; place-items: center; overflow: visible; border-radius: 50%; background: #f3f5ef; box-shadow: 0 0 0 1px rgb(24 61 50 / 10%); }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .brand-name { display: grid; font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+    .brand-name span:last-child { margin-top: 4px; color: var(--muted); font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 0.58rem; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
+    .menu-toggle { display: none; width: 48px; height: 48px; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: transparent; color: var(--forest); cursor: pointer; }
+    .menu-toggle:hover, .menu-toggle[aria-expanded="true"] { background: #f1f4ef; }
+    .menu-toggle svg { width: 25px; height: 25px; }
+    .navigation { position: static; display: flex; align-items: center; gap: clamp(12px, 2vw, 28px); padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+    .navigation a { display: flex; min-height: 48px; align-items: center; padding: 10px 14px; border-radius: 10px; color: #39463e; font-size: 0.92rem; font-weight: 600; text-decoration: none; }
+    .navigation a:hover, .navigation a:focus-visible { background: #f2f5f1; color: var(--forest); }
+    .navigation .nav-cta { margin: 8px 0 0; justify-content: center; border-radius: 999px; background: #1a73e8; color: white; }
     main { min-height: 420px; display: grid; place-items: center; padding: 72px 0; }
     .empty-state { max-width: 720px; text-align: center; padding: 52px 32px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,0.25); }
     .section-kicker { margin-bottom: 14px; color: var(--clay); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.16em; text-transform: uppercase; }
@@ -41,38 +47,50 @@
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { color: var(--paper); font-family: Georgia, "Times New Roman", serif; font-size: 0.98rem; }
     .footer-note { margin: 0; font-size: 0.79rem; text-align: right; }
+    @media (max-width: 900px) {
+      .site-header { width: calc(100% - 40px); min-height: 88px; flex-direction: row; align-items: center; padding: 8px 14px; }
+      .menu-toggle { display: inline-flex; }
+      .navigation { position: absolute; top: calc(100% - 1px); right: 0; left: 0; z-index: 5; display: none; align-items: stretch; flex-direction: column; gap: 0; padding: 12px; border: 1px solid rgb(24 61 50 / 10%); border-radius: 0 0 18px 18px; background: #fff; box-shadow: 0 20px 36px rgb(16 45 37 / 12%); }
+      .navigation.is-open { display: flex; }
+    }
     @media (max-width: 600px) {
       .page-shell { width: 100%; margin: 0; box-shadow: none; }
       .wrap { width: calc(100% - 36px); }
-      .site-header { min-height: 0; align-items: flex-start; flex-direction: column; gap: 16px; padding: 15px 0; }
-      .brand-name { font-size: 0.96rem; }
-      .brand-name span:last-child { font-size: 0.56rem; letter-spacing: 0.1em; }
-      .brand-mark { flex: 0 0 40px; width: 40px; height: 40px; }
-      .navigation { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 8px; }
-      .navigation a { display: inline-flex; min-height: 36px; align-items: center; padding: 6px 10px; border: 1px solid rgb(24 61 50 / 12%); border-radius: 999px; background: rgb(255 255 255 / 45%); font-size: 0.75rem; white-space: nowrap; }
+      .site-header { width: calc(100% - 36px); min-height: 76px; padding: 6px 0; }
+      .brand { gap: 8px; }
+      .brand-name { font-size: 0.9rem; }
+      .brand-name span:last-child { font-size: 0.5rem; letter-spacing: 0.08em; }
+      .brand-mark { flex: 0 0 64px; width: 64px; height: 64px; }
+      .navigation { top: calc(100% - 1px); right: 0; left: 0; width: auto; }
       main { min-height: 360px; padding: 42px 18px; }
       .empty-state { padding: 36px 22px; }
       .footer-inner { align-items: flex-start; flex-direction: column; gap: 7px; }
       .footer-note { text-align: left; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .brand, .site-header.is-scrolling-down .brand { transition: none; }
+    }
   </style>
 </head>
 <body>
   <div class="page-shell">
-    <div class="wrap">
-      <header class="site-header">
+    <header class="site-header">
         <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
-          <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt="The Epitome Integrated Organic Farm logo"></span>
+          <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
           <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
         </a>
-        <nav class="navigation" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+        </button>
+        <nav class="navigation" id="main-navigation" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
+          <a href="design.html">Design</a>
           <a href="approach.html">Our approach</a>
           <a href="platform.html">The platform</a>
+          <a class="nav-cta" href="index.html#vision">Explore the farm</a>
         </nav>
-      </header>
-    </div>
+    </header>
     <main>
       <div class="empty-state">
         <p class="section-kicker">Coming soon</p>
@@ -87,5 +105,37 @@
       </div>
     </footer>
   </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+    const siteHeader = document.querySelector(".site-header");
+    let previousScrollY = window.scrollY;
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("is-open", !isExpanded);
+      siteHeader.classList.remove("is-scrolling-down");
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - previousScrollY) < 8) return;
+
+      const menuIsOpen = window.innerWidth <= 900 && menuToggle.getAttribute("aria-expanded") === "true";
+      const headerHasFocus = siteHeader.contains(document.activeElement);
+      siteHeader.classList.toggle("is-scrolling-down", currentScrollY > siteHeader.offsetHeight && currentScrollY > previousScrollY && !menuIsOpen && !headerHasFocus);
+      previousScrollY = currentScrollY;
+    }, { passive: true });
+  </script>
 </body>
 </html>

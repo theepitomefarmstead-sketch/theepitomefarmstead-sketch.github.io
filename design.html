@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Explore regenerative land-design principles for farms and landscapes in the Kathmandu Valley.">
+  <title>Regenerative Land Design | The Epitome Integrated Organic Farm</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183d32;
+      --forest-deep: #102d25;
+      --leaf: #526c45;
+      --clay: #c76e48;
+      --sun: #e8bc67;
+      --paper: #f5f2e9;
+      --cream: #fffdf7;
+      --ink: #242820;
+      --muted: #666b5f;
+      --line: #deddd0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #0d1212;
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .page-shell {
+      max-width: 1212px;
+      margin: 32px auto;
+      background: #f7f4ee;
+      box-shadow: 0 30px 60px rgb(0 0 0 / 24%);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 56px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      padding: 10px 14px;
+      transform: translateY(-150%);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--forest);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      width: min(1180px, calc(100% - 56px));
+      margin: 0 auto;
+      min-height: 96px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgb(24 61 50 / 8%);
+      background: transparent;
+    }
+
+    .site-header::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      transform: translateX(-50%);
+      background: #fff;
+      content: "";
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--forest);
+      text-decoration: none;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear;
+    }
+
+    .site-header.is-scrolling-down .brand {
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      place-items: center;
+      overflow: visible;
+      border-radius: 50%;
+      background: #f3f5ef;
+      box-shadow: 0 0 0 1px rgb(24 61 50 / 10%);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      display: grid;
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .brand-name span:last-child {
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle[aria-expanded="true"] {
+      background: #f1f4ef;
+    }
+
+    .menu-toggle svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .navigation {
+      display: flex;
+      position: static;
+      align-items: center;
+      gap: clamp(4px, 1vw, 14px);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      flex-direction: row;
+    }
+
+    .navigation a {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #39463e;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .navigation a:hover,
+    .navigation a:focus-visible,
+    .navigation a[aria-current="page"] {
+      color: var(--clay);
+    }
+
+    .navigation .nav-cta {
+      margin: 0 0 0 8px;
+      border-radius: 99px;
+      background: #1a73e8;
+      color: white;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .navigation .nav-cta:hover,
+    .navigation .nav-cta:focus-visible {
+      background: #155fc0;
+      color: white;
+    }
+
+    .design-subnav {
+      position: fixed;
+      top: 112px;
+      left: 50%;
+      z-index: 15;
+      display: flex;
+      max-width: calc(100vw - 32px);
+      align-items: center;
+      gap: 4px;
+      padding: 7px;
+      overflow-x: auto;
+      border: 1px solid rgb(24 61 50 / 10%);
+      border-radius: 999px;
+      background: rgb(255 255 255 / 96%);
+      box-shadow: 0 8px 28px rgb(16 45 37 / 16%);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -10px);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+      visibility: hidden;
+      scrollbar-width: none;
+    }
+
+    .design-subnav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .design-subnav.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear;
+      visibility: visible;
+    }
+
+    .design-subnav a {
+      flex: 0 0 auto;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #535a5e;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .design-subnav a:hover,
+    .design-subnav a:focus-visible,
+    .design-subnav a[aria-current="location"] {
+      background: #eef2ed;
+      color: var(--forest);
+    }
+
+    main [id] {
+      scroll-margin-top: 180px;
+    }
+
+    .design-hero {
+      position: relative;
+      display: grid;
+      min-height: 420px;
+      place-items: center;
+      overflow: hidden;
+      padding: 62px 28px 94px;
+      isolation: isolate;
+      background:
+        linear-gradient(180deg, rgb(16 34 29 / 42%), rgb(16 34 29 / 50%)),
+        radial-gradient(ellipse at 74% 9%, #f2c76d 0 4%, transparent 19%),
+        linear-gradient(155deg, #9cae91 0%, #5f8160 36%, #284e3f 72%, #193b32 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .design-hero::before,
+    .design-hero::after {
+      position: absolute;
+      right: -8%;
+      bottom: -29%;
+      left: -8%;
+      z-index: -1;
+      height: 63%;
+      border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+      content: "";
+    }
+
+    .design-hero::before {
+      background:
+        repeating-radial-gradient(ellipse at 52% 100%, transparent 0 18px, rgb(242 199 109 / 30%) 19px 20px, transparent 21px 34px),
+        linear-gradient(160deg, #728e58, #456c4b 58%, #315a49);
+      transform: rotate(-4deg) translateY(-7%);
+    }
+
+    .design-hero::after {
+      bottom: -41%;
+      background: linear-gradient(160deg, #526f4b, #214a3c 70%);
+      transform: rotate(3deg);
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      margin: 0 0 14px;
+      color: var(--clay);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .design-hero .eyebrow {
+      color: #f5dbac;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .design-hero h1 {
+      margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.5rem, 8vw, 6.7rem);
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      line-height: 0.98;
+    }
+
+    .design-hero p:last-child {
+      max-width: 590px;
+      margin: 0 auto;
+      color: rgb(255 255 255 / 90%);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      align-items: start;
+      gap: 56px;
+      padding: 72px max(32px, 7vw);
+      background: var(--cream);
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.25rem, 4vw, 3.6rem);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+    }
+
+    .intro-copy p:last-child {
+      max-width: 660px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .scope {
+      padding: 72px max(32px, 7vw) 78px;
+      background: #eeeadf;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      max-width: 570px;
+    }
+
+    .section-heading > p {
+      max-width: 410px;
+      margin: 0 0 4px;
+      color: var(--muted);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      min-height: 195px;
+      padding: 24px;
+      border: 1px solid rgb(24 61 50 / 12%);
+      border-radius: 5px 26px 5px 26px;
+      background: var(--cream);
+    }
+
+    .service-number {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background: #e8eddf;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.9rem;
+    }
+
+    .service-card h3,
+    .support-card h3 {
+      margin-bottom: 8px;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .service-card p,
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .support {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 56px;
+      padding: 72px max(32px, 7vw);
+      background: var(--cream);
+    }
+
+    .support-intro > p:last-child {
+      max-width: 400px;
+      margin: 18px 0 0;
+      color: var(--muted);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .support-card {
+      padding: 19px;
+      border-left: 3px solid var(--moss);
+      background: #f3f0e8;
+    }
+
+    .support-card h3 {
+      font-size: 1.05rem;
+    }
+
+    .support-card p {
+      font-size: 0.85rem;
+    }
+
+    .audience {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 54px;
+      padding: 68px max(32px, 7vw);
+      background: var(--forest);
+      color: var(--cream);
+    }
+
+    .audience h2 {
+      color: var(--cream);
+    }
+
+    .audience .audience-kicker {
+      color: var(--sun);
+    }
+
+    .audience-copy p:last-child {
+      max-width: 480px;
+      margin: 18px 0 0;
+      color: #d0d6c9;
+    }
+
+    .audience-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .audience-list li {
+      padding: 15px 16px;
+      border: 1px solid rgb(255 253 247 / 22%);
+      border-radius: 4px 18px;
+      color: var(--cream);
+      font-size: 0.9rem;
+    }
+
+    .next-step {
+      padding: 66px 24px;
+      background: var(--clay);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .next-step .section-kicker {
+      color: #f5dbac;
+    }
+
+    .next-step h2 {
+      max-width: 700px;
+      margin: 0 auto 14px;
+      color: var(--cream);
+    }
+
+    .next-step p {
+      max-width: 560px;
+      margin: 0 auto 22px;
+      color: rgb(255 253 247 / 88%);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border-radius: 999px;
+      background: var(--forest);
+      color: white;
+      font-size: 0.88rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: var(--forest-deep);
+    }
+
+    .site-footer {
+      padding: 27px 0;
+      background: var(--forest-deep);
+      color: #d0d6c9;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.98rem;
+    }
+
+    .footer-note {
+      margin: 0;
+      font-size: 0.79rem;
+      text-align: right;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--clay);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .design-subnav {
+        top: 100px;
+        gap: 2px;
+        padding: 5px;
+      }
+
+      .design-subnav a {
+        padding: 9px 13px;
+        font-size: 0.84rem;
+      }
+
+      .page-shell {
+        margin: 0 auto;
+      }
+
+      .site-header {
+        width: calc(100% - 40px);
+        min-height: 88px;
+        align-items: center;
+        flex-direction: row;
+        padding: 8px 14px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .wrap {
+        width: calc(100% - 40px);
+      }
+
+      .navigation {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        z-index: 5;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid rgb(24 61 50 / 10%);
+        border-radius: 0 0 18px 18px;
+        background: #fff;
+        box-shadow: 0 20px 36px rgb(16 45 37 / 12%);
+      }
+
+      .navigation.is-open {
+        display: flex;
+      }
+
+      .navigation .nav-cta {
+        margin: 8px 0 0;
+      }
+
+      .intro,
+      .support {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .design-subnav {
+        top: 88px;
+        max-width: calc(100vw - 24px);
+      }
+
+      .design-subnav a {
+        padding: 9px 12px;
+        font-size: 0.8rem;
+      }
+
+      main [id] {
+        scroll-margin-top: 145px;
+      }
+
+      body {
+        background: #f7f4ee;
+      }
+
+      .page-shell {
+        width: 100%;
+        box-shadow: none;
+      }
+
+      .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .site-header {
+        width: calc(100% - 36px);
+        min-height: 76px;
+        gap: 0;
+        padding: 6px 0;
+      }
+
+      .brand {
+        gap: 8px;
+      }
+
+      .brand-mark {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+
+      .brand-name {
+        font-size: 0.9rem;
+      }
+
+      .brand-name span:last-child {
+        font-size: 0.5rem;
+        letter-spacing: 0.08em;
+      }
+
+      .navigation {
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        width: auto;
+      }
+
+      .design-hero {
+        min-height: 350px;
+        padding: 54px 22px 84px;
+      }
+
+      .design-hero h1 {
+        font-size: clamp(3rem, 13vw, 4.6rem);
+      }
+
+      .design-hero p:last-child {
+        font-size: 0.98rem;
+      }
+
+      .intro,
+      .scope,
+      .support,
+      .audience {
+        padding: 44px 22px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .section-heading h2,
+      h2 {
+        font-size: clamp(2.1rem, 9vw, 3rem);
+      }
+
+      .intro-copy p:last-child {
+        font-size: 0.96rem;
+      }
+
+      .service-grid,
+      .support-grid,
+      .audience {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+        padding: 20px;
+      }
+
+      .service-number {
+        margin-bottom: 14px;
+      }
+
+      .audience {
+        gap: 24px;
+      }
+
+      .audience-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .audience-list li {
+        padding: 12px;
+        font-size: 0.82rem;
+      }
+
+      .next-step {
+        padding: 48px 22px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .design-subnav,
+      .design-subnav.is-visible {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+          <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
+          <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+        </button>
+        <nav class="navigation" id="main-navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="design.html" aria-current="page">Design</a>
+          <a href="approach.html">Our approach</a>
+          <a href="platform.html">The platform</a>
+          <a class="nav-cta" href="index.html#vision">Explore the farm</a>
+        </nav>
+    </header>
+
+    <main id="main">
+      <section class="design-hero" aria-labelledby="design-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Regenerative land planning</p>
+          <h1 id="design-title">Design with the land.</h1>
+          <p>Thoughtful farm plans begin by reading the place: its water, terrain, soil, ecology, and the people who care for it.</p>
+        </div>
+      </section>
+
+      <section class="intro" id="overview" aria-labelledby="intro-title">
+        <div>
+          <p class="section-kicker">A whole-site perspective</p>
+          <h2 id="intro-title">A connected plan for a living landscape.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>Regenerative land design brings food production and ecological care into one site-specific plan. Rather than treating fields, water, trees, and buildings as separate pieces, it considers how each can support the others over time.</p>
+        </div>
+      </section>
+
+      <section class="scope" id="planning" aria-labelledby="scope-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Planning areas</p>
+            <h2 id="scope-title">Design that connects the pieces.</h2>
+          </div>
+          <p>Depending on the site and goals, a design can explore these connected elements as part of a phased plan.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Whole-site layout</h3>
+            <p>Map zones, access, growing areas, and built spaces around the land's conditions and intended use.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3>Water &amp; terrain</h3>
+            <p>Consider slope, runoff, storage, and water movement when planning resilient landscapes.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Agroforestry &amp; planting</h3>
+            <p>Plan trees, perennial crops, windbreaks, and planting patterns suited to the local context.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h3>Soil &amp; fertility</h3>
+            <p>Identify opportunities to protect soil, build organic matter, and cycle nutrients within the farm.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3>Integrated food systems</h3>
+            <p>Connect gardens, crops, livestock, compost, and local food pathways where appropriate.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <h3>Practical phasing</h3>
+            <p>Organize ideas into manageable steps that can be adapted as the land and project change.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="support" id="support" aria-labelledby="support-title">
+        <div class="support-intro">
+          <p class="section-kicker">From plan to practice</p>
+          <h2 id="support-title">Support can continue beyond the drawing.</h2>
+          <p>Implementation needs depend on the land, available resources, and the people involved. Possible next steps can be scoped to fit the project.</p>
+        </div>
+        <div class="support-grid">
+          <article class="support-card">
+            <h3>Site assessment</h3>
+            <p>Walk the land and record conditions, opportunities, and questions to guide planning.</p>
+          </article>
+          <article class="support-card">
+            <h3>Implementation guidance</h3>
+            <p>Break selected design priorities into clear, practical steps.</p>
+          </article>
+          <article class="support-card">
+            <h3>Knowledge sharing</h3>
+            <p>Help farmers and project teams understand the reasoning behind design choices.</p>
+          </article>
+          <article class="support-card">
+            <h3>Follow-up learning</h3>
+            <p>Review observations and update plans as the site responds and conditions evolve.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="audience" id="audience" aria-labelledby="audience-title">
+        <div class="audience-copy">
+          <p class="section-kicker audience-kicker">Who this is for</p>
+          <h2 id="audience-title">For people caring for land and livelihoods.</h2>
+          <p>Land planning is most useful when it reflects the needs of the people who will steward, work, and learn from the landscape.</p>
+        </div>
+        <ul class="audience-list">
+          <li>Farmers &amp; growers</li>
+          <li>Landowners</li>
+          <li>Community groups</li>
+          <li>Cooperatives</li>
+          <li>Learning projects</li>
+          <li>Local organizations</li>
+        </ul>
+      </section>
+
+      <section class="next-step" id="next-step" aria-labelledby="next-step-title">
+        <p class="section-kicker">Start with the place</p>
+        <h2 id="next-step-title">Every landscape has its own story.</h2>
+        <p>Explore how our farm connects regenerative practice, local food, and long-term land care.</p>
+        <a class="button" href="approach.html">Explore our approach <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+
+    <nav class="design-subnav" aria-label="Design page sections">
+      <a href="#overview">Overview</a>
+      <a href="#planning">Planning</a>
+      <a href="#support">Support</a>
+      <a href="#audience">Who it's for</a>
+      <a href="#next-step">Next step</a>
+    </nav>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">The Epitome Integrated Organic Farm</span>
+        <p class="footer-note">Regenerative agriculture · Integrated farming · Kathmandu Valley, Nepal</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+    const siteHeader = document.querySelector(".site-header");
+    const designHero = document.querySelector(".design-hero");
+    const designSubnav = document.querySelector(".design-subnav");
+    const designSections = [...designSubnav.querySelectorAll("a")].map((link) => ({
+      link,
+      section: document.querySelector(link.getAttribute("href"))
+    }));
+    let previousScrollY = window.scrollY;
+
+    const updateDesignSubnav = () => {
+      designSubnav.classList.toggle("is-visible", window.scrollY > designHero.offsetHeight);
+    };
+
+    updateDesignSubnav();
+    window.addEventListener("scroll", updateDesignSubnav, { passive: true });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((first, second) => first.boundingClientRect.top - second.boundingClientRect.top);
+      if (visibleSections.length === 0) return;
+
+      const activeId = visibleSections[0].target.id;
+      for (const { link, section } of designSections) {
+        if (section.id === activeId) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      }
+    }, {
+      rootMargin: "-150px 0px -55% 0px",
+      threshold: 0
+    });
+
+    for (const { section } of designSections) {
+      sectionObserver.observe(section);
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("is-open", !isExpanded);
+      siteHeader.classList.remove("is-scrolling-down");
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - previousScrollY) < 8) return;
+
+      const menuIsOpen = window.innerWidth <= 900 && menuToggle.getAttribute("aria-expanded") === "true";
+      const headerHasFocus = siteHeader.contains(document.activeElement);
+      siteHeader.classList.toggle(
+        "is-scrolling-down",
+        currentScrollY > siteHeader.offsetHeight &&
+          currentScrollY > previousScrollY &&
+          !menuIsOpen &&
+          !headerHasFocus
+      );
+      previousScrollY = currentScrollY;
+    }, { passive: true });
+  </script>
+</body>
+</html>

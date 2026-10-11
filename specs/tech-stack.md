@@ -32,7 +32,7 @@
 
 - Keep the site lightweight and easy to maintain
 - Prefer clear structure over complex CMS dependencies
-- Use simple pages for landing, about, approach, and platform sections
+- Use simple pages for landing, about, design services, approach, and platform sections
 
 ## Quality bar
 
