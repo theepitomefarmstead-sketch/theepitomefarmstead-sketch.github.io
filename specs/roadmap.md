@@ -18,6 +18,7 @@ This roadmap intentionally breaks work into very small phases so the project can
 
 - Add `about.html` with a simple, intentional layout
 - Add `design.html` to explain regenerative site-design principles and potential planning areas
+- Add `csa.html` for product subscription requests with a member-defined delivery interval
 - Add `approach.html` as a placeholder for methods and principles
 - Add `platform.html` as a placeholder for the digital farm system
 

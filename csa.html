@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Request a Community Supported Agriculture subscription from The Epitome Integrated Organic Farm, with a delivery interval that suits you.">
+  <title>CSA Subscriptions | The Epitome Integrated Organic Farm</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183d32;
+      --forest-deep: #102d25;
+      --leaf: #526c45;
+      --clay: #c76e48;
+      --paper: #f5f2e9;
+      --cream: #fffdf7;
+      --ink: #242820;
+      --muted: #666b5f;
+      --line: #deddd0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #0d1212;
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    .page-shell {
+      max-width: 1212px;
+      margin: 32px auto;
+      overflow: clip;
+      background: #f7f4ee;
+      box-shadow: 0 30px 60px rgb(0 0 0 / 24%);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 30;
+      padding: 10px 14px;
+      transform: translateY(-150%);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--forest);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      width: min(1180px, calc(100% - 56px));
+      min-height: 96px;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgb(24 61 50 / 8%);
+      background: transparent;
+    }
+
+    .site-header::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      transform: translateX(-50%);
+      background: #fff;
+      content: "";
+    }
+
+    .site-header.is-scrolling-down::before {
+      background: transparent;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--forest);
+      text-decoration: none;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear;
+    }
+
+    .site-header.is-scrolling-down .brand {
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      place-items: center;
+      overflow: visible;
+      border-radius: 50%;
+      background: #f3f5ef;
+      box-shadow: 0 0 0 1px rgb(24 61 50 / 10%);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      display: grid;
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .brand-name span:last-child {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.58rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .navigation {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: clamp(4px, 1vw, 14px);
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .navigation a {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #39463e;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .navigation a:hover,
+    .navigation a:focus-visible,
+    .navigation a[aria-current="page"] {
+      background: #f2f5f1;
+      color: var(--forest);
+    }
+
+    .navigation .nav-cta {
+      margin-left: 4px;
+      border-radius: 999px;
+      background: #1a73e8;
+      color: #fff;
+    }
+
+    main {
+      padding-bottom: 72px;
+    }
+
+    .csa-hero {
+      position: relative;
+      display: grid;
+      min-height: 390px;
+      place-items: center;
+      overflow: hidden;
+      padding: 64px 28px 88px;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 74% 8%, rgb(232 188 103 / 85%) 0 4%, transparent 20%),
+        linear-gradient(145deg, #849778 0%, #41664d 48%, #183d32 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .csa-hero::after {
+      position: absolute;
+      right: -7%;
+      bottom: -48%;
+      left: -7%;
+      z-index: -1;
+      height: 80%;
+      transform: rotate(-3deg);
+      border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+      background:
+        repeating-radial-gradient(ellipse at 50% 100%, transparent 0 18px, rgb(242 199 109 / 22%) 19px 20px, transparent 21px 34px),
+        linear-gradient(160deg, #526f4b, #214a3c 70%);
+      content: "";
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      margin: 0 0 14px;
+      color: var(--clay);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .csa-hero .eyebrow {
+      color: #f5dbac;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .csa-hero h1 {
+      margin-bottom: 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.4rem, 7vw, 6rem);
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      line-height: 0.98;
+    }
+
+    .csa-hero p:last-child {
+      max-width: 610px;
+      margin: 0 auto;
+      color: rgb(255 255 255 / 90%);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .csa-intro {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 58px 28px 30px;
+      text-align: center;
+    }
+
+    .csa-intro h2 {
+      margin-bottom: 14px;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+    }
+
+    .csa-intro p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .subscription-card {
+      width: min(790px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--cream);
+      box-shadow: 0 22px 54px rgb(16 45 37 / 8%);
+    }
+
+    .subscription-card h2 {
+      margin-bottom: 8px;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+    }
+
+    .form-intro {
+      margin-bottom: 28px;
+      color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .field {
+      display: grid;
+      align-content: start;
+      gap: 7px;
+    }
+
+    .field--wide {
+      grid-column: 1 / -1;
+    }
+
+    .field label,
+    .frequency-label {
+      color: var(--forest);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea,
+    .frequency-control input,
+    .frequency-control select {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 13px;
+      border: 1px solid #cfd2c6;
+      border-radius: 9px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .frequency-control input:focus,
+    .frequency-control select:focus {
+      border-color: var(--leaf);
+      outline: 3px solid rgb(82 108 69 / 18%);
+    }
+
+    .frequency-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .frequency-control {
+      display: grid;
+      grid-template-columns: minmax(84px, 0.45fr) minmax(140px, 1fr);
+      gap: 10px;
+    }
+
+    .field-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .privacy-note {
+      margin: 24px 0;
+      padding: 14px 16px;
+      border-left: 3px solid var(--leaf);
+      background: #f1f3eb;
+      color: #4e5d4f;
+      font-size: 0.86rem;
+    }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #4f554c;
+      font-size: 0.86rem;
+    }
+
+    .consent input {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin: 2px 0 0;
+      accent-color: var(--forest);
+    }
+
+    .form-actions {
+      display: grid;
+      justify-items: start;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .submit-button {
+      min-height: 50px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--forest);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .submit-button:hover:not(:disabled),
+    .submit-button:focus-visible {
+      background: var(--forest-deep);
+    }
+
+    .submit-button:disabled {
+      background: #82887d;
+      cursor: not-allowed;
+    }
+
+    .form-status {
+      margin: 0;
+      color: #7a3f2c;
+      font-size: 0.88rem;
+    }
+
+    .form-status:empty {
+      display: none;
+    }
+
+    .delivery-note {
+      width: min(790px, calc(100% - 40px));
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 0.83rem;
+      text-align: center;
+    }
+
+    .site-footer {
+      padding: 27px 0;
+      background: var(--forest-deep);
+      color: #d0d6c9;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 56px));
+      margin: 0 auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      color: var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.98rem;
+    }
+
+    .footer-note {
+      margin: 0;
+      font-size: 0.79rem;
+      text-align: right;
+    }
+
+    :focus-visible {
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 1100px) {
+      .site-header {
+        width: calc(100% - 40px);
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand-mark {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+
+      .brand-name {
+        font-size: 1rem;
+      }
+
+      .brand-name span:last-child {
+        font-size: 0.5rem;
+      }
+
+      .navigation {
+        gap: 2px;
+      }
+
+      .navigation a {
+        padding: 9px 8px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-shell {
+        margin: 0 auto;
+      }
+
+      .site-header {
+        width: calc(100% - 40px);
+        min-height: 88px;
+        padding: 8px 14px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .navigation {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        z-index: 5;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid rgb(24 61 50 / 10%);
+        border-radius: 0 0 18px 18px;
+        background: #fff;
+        box-shadow: 0 20px 36px rgb(16 45 37 / 12%);
+      }
+
+      .navigation.is-open {
+        display: flex;
+      }
+
+      .navigation a {
+        min-height: 48px;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+      }
+
+      .navigation .nav-cta {
+        margin: 8px 0 0;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background: #f7f4ee;
+      }
+
+      .page-shell {
+        width: 100%;
+        box-shadow: none;
+      }
+
+      .site-header {
+        width: calc(100% - 36px);
+        min-height: 76px;
+        padding: 6px 0;
+      }
+
+      .brand {
+        gap: 8px;
+      }
+
+      .brand-mark {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+      }
+
+      .brand-name {
+        font-size: 0.9rem;
+      }
+
+      .brand-name span:last-child {
+        font-size: 0.5rem;
+        letter-spacing: 0.08em;
+      }
+
+      .navigation {
+        right: 0;
+        left: 0;
+        width: auto;
+      }
+
+      main {
+        padding-bottom: 48px;
+      }
+
+      .csa-hero {
+        min-height: 340px;
+        padding: 50px 22px 78px;
+      }
+
+      .csa-hero h1 {
+        font-size: clamp(3rem, 13vw, 4.5rem);
+      }
+
+      .csa-intro {
+        padding: 42px 22px 24px;
+      }
+
+      .subscription-card {
+        width: calc(100% - 28px);
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .field--wide {
+        grid-column: auto;
+      }
+
+      .delivery-note {
+        width: calc(100% - 36px);
+      }
+
+      .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .brand,
+      .site-header.is-scrolling-down .brand {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+        <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
+        <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+      </button>
+      <nav class="navigation" id="main-navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="design.html">Design</a>
+        <a href="csa.html" aria-current="page">CSA</a>
+        <a href="approach.html">Our approach</a>
+        <a href="platform.html">The platform</a>
+        <a class="nav-cta" href="#subscribe">Subscribe</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="csa-hero" aria-labelledby="csa-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Community supported agriculture</p>
+          <h1 id="csa-title">Good food, in your rhythm.</h1>
+          <p>Choose farm products and tell us how often you would like to receive them. We’ll follow up to confirm availability and delivery details.</p>
+        </div>
+      </section>
+
+      <section class="csa-intro" aria-labelledby="how-title">
+        <p class="section-kicker">A flexible farm connection</p>
+        <h2 id="how-title">Make a subscription request that fits you.</h2>
+        <p>Select a product, set the quantity, and choose a delivery interval in days, weeks, or months. Your request is not confirmed until the farm team contacts you.</p>
+      </section>
+
+      <section class="subscription-card" id="subscribe" aria-labelledby="form-title">
+        <h2 id="form-title">Request a CSA subscription</h2>
+        <p class="form-intro">Share your preferences and we’ll get back to you about the next steps.</p>
+
+        <form id="csa-form" method="post" target="_blank">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required>
+            </div>
+            <div class="field">
+              <label for="product">Product of interest</label>
+              <select id="product" name="product" required>
+                <option value="" selected disabled>Select a product</option>
+                <option value="Seasonal vegetables">Seasonal vegetables</option>
+                <option value="Free-range chicken">Free-range chicken</option>
+                <option value="Value-added farm products">Value-added farm products</option>
+                <option value="Mixed farm products">Mixed farm products</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quantity">Quantity per delivery</label>
+              <input id="quantity" name="quantity" type="number" min="1" max="99" step="1" value="1" required>
+              <p class="field-hint">We’ll confirm available sizes and units with you.</p>
+            </div>
+            <div class="frequency-field">
+              <span class="frequency-label">How often would you like delivery?</span>
+              <div class="frequency-control">
+                <input id="frequency" name="frequency" type="number" min="1" max="365" step="1" value="1" aria-label="Delivery interval amount" required>
+                <select id="frequency-unit" name="frequencyUnit" aria-label="Delivery interval unit" required>
+                  <option value="weeks" selected>week(s)</option>
+                  <option value="days">day(s)</option>
+                  <option value="months">month(s)</option>
+                </select>
+              </div>
+              <p class="field-hint">For example, every 2 weeks or every 1 month.</p>
+            </div>
+            <div class="field">
+              <label for="start-date">Preferred start date</label>
+              <input id="start-date" name="startDate" type="date">
+            </div>
+            <div class="field">
+              <label for="delivery-area">Delivery area or pickup preference</label>
+              <input id="delivery-area" name="deliveryArea" type="text" autocomplete="street-address" maxlength="250" placeholder="Area or preferred pickup location" required>
+            </div>
+            <div class="field field--wide">
+              <label for="notes">Anything else we should know? <span>(optional)</span></label>
+              <textarea id="notes" name="notes" maxlength="1000" placeholder="Product preferences, questions, or delivery notes"></textarea>
+            </div>
+          </div>
+
+          <div class="privacy-note">
+            Your details will be used to respond to this subscription request and coordinate potential deliveries. A request does not guarantee product availability or confirm an order.
+          </div>
+
+          <label class="consent" for="contact-consent">
+            <input id="contact-consent" name="contactConsent" type="checkbox" value="yes" required>
+            <span>I agree that the farm may contact me about this CSA request.</span>
+          </label>
+
+          <div class="field" hidden aria-hidden="true">
+            <label for="website">Leave this field blank</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-actions">
+            <button class="submit-button" id="submit-button" type="submit" disabled>Request subscription</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite">Online requests are not connected yet. The farm team needs to configure the email endpoint before submissions can be sent.</p>
+          </div>
+        </form>
+      </section>
+      <p class="delivery-note">Product range, pricing, delivery schedule, and availability will be confirmed directly by the farm team.</p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">The Epitome Integrated Organic Farm</span>
+        <p class="footer-note">Regenerative agriculture · Integrated farming · Kathmandu Valley, Nepal</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const CSA_WEB_APP_URL = "";
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+    const siteHeader = document.querySelector(".site-header");
+    const form = document.querySelector("#csa-form");
+    const submitButton = document.querySelector("#submit-button");
+    const formStatus = document.querySelector("#form-status");
+    const frequency = document.querySelector("#frequency");
+    const frequencyUnit = document.querySelector("#frequency-unit");
+    let previousScrollY = window.scrollY;
+
+    const updateFrequencyLimit = () => {
+      const maximum = frequencyUnit.value === "days" ? 365 : frequencyUnit.value === "weeks" ? 52 : 12;
+      frequency.max = String(maximum);
+      if (Number(frequency.value) > maximum) frequency.value = String(maximum);
+    };
+
+    frequencyUnit.addEventListener("change", updateFrequencyLimit);
+    updateFrequencyLimit();
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("is-open", !isExpanded);
+      siteHeader.classList.remove("is-scrolling-down");
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - previousScrollY) < 8) return;
+
+      const menuIsOpen = window.innerWidth <= 900 && menuToggle.getAttribute("aria-expanded") === "true";
+      const headerHasFocus = siteHeader.contains(document.activeElement);
+      siteHeader.classList.toggle(
+        "is-scrolling-down",
+        currentScrollY > siteHeader.offsetHeight &&
+          currentScrollY > previousScrollY &&
+          !menuIsOpen &&
+          !headerHasFocus
+      );
+      previousScrollY = currentScrollY;
+    }, { passive: true });
+
+    if (/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(CSA_WEB_APP_URL)) {
+      form.action = CSA_WEB_APP_URL;
+      submitButton.disabled = false;
+      formStatus.textContent = "Your request will be emailed to the farm, and a confirmation will open in a new tab.";
+      formStatus.style.color = "var(--muted)";
+    } else {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        formStatus.textContent = "Your request was not sent. The CSA email endpoint has not been configured.";
+      });
+    }
+  </script>
+</body>
+</html>
