@@ -1334,12 +1334,12 @@
       color: #d0d6c9;
     }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+    .footer-inner { display: grid; gap: 20px; }
+    .footer-contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .footer-contact a { display: grid; align-content: start; gap: 3px; min-width: 0; color: #d0d6c9; text-decoration: none; overflow-wrap: anywhere; }
+    .footer-contact a:hover { color: #fff; }
+    .footer-contact__label { color: var(--paper); font-size: 0.77rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-note { grid-column: 1 / -1; margin: 0; font-size: 0.79rem; text-align: left; }
 
     .footer-brand {
       color: var(--cream);
@@ -1527,11 +1527,7 @@
         margin-top: 2px;
       }
 
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 7px;
-      }
+      .footer-contact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       .footer-note {
         text-align: left;
@@ -2011,6 +2007,12 @@
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <span class="footer-brand">The Epitome Integrated Organic Farm</span>
+        <nav class="footer-contact sm:grid-cols-2 lg:grid-cols-4" aria-label="Contact the farm">
+          <a href="tel:+9779764599190"><span class="footer-contact__label">Phone · Mobile</span><span>976-4599190</span></a>
+          <a href="mailto:theepitomefarmstead@gmail.com"><span class="footer-contact__label">Email</span><span>theepitomefarmstead@gmail.com</span></a>
+          <a href="https://www.facebook.com/messages/t/61563772464888/" target="_blank" rel="noopener noreferrer"><span class="footer-contact__label">Messenger</span><span>The Epitome Integrated Organic Farm</span></a>
+          <a href="https://wa.me/9779764599190" target="_blank" rel="noopener noreferrer"><span class="footer-contact__label">WhatsApp</span><span>+977 976-4599190</span></a>
+        </nav>
         <p class="footer-note">Regenerative agriculture · Integrated farming · Kathmandu Valley, Nepal</p>
       </div>
     </footer>
