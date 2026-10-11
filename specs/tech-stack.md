@@ -13,9 +13,9 @@
 
 ### CSA form deployment
 
-- Deploy `csa-subscriptions.gs` as a web app that executes as the farm account and is accessible to anyone submitting the public form.
-- Authorize the script to send email using the farm account's Google Apps Script permissions.
-- Set `CSA_WEB_APP_URL` in `csa.html` to the deployed `/exec` URL. The subscription button stays disabled until this endpoint is configured.
+- The CSA email web app is deployed as **The Epitome Farm CSA Email**, version 1, and is accessible to anyone submitting the public form.
+- The current deployment executes as `rayamjahi.ajay@gmail.com`, which authorized the app to send email. To send from the farm's own Google account instead, redeploy the script while signed in as `theepitomefarmstead@gmail.com`.
+- `CSA_WEB_APP_URL` in `csa.html` is configured with the deployment's `/exec` URL. The subscription button is enabled when this endpoint is configured.
 - Requests are emailed to `theepitomefarmstead@gmail.com`. A request does not promise product availability or finalize a subscription.
 
 ## Design system
