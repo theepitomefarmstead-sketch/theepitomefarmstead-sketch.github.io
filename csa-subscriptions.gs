@@ -13,6 +13,7 @@ function doPost(event) {
       "Requested delivery interval: every " + interval,
       "Preferred start date: " + (request.startDate || "Not specified"),
       "Delivery area or pickup preference: " + request.deliveryArea,
+      "Delivery coordinates: " + (request.deliveryCoordinates || "Address selected"),
       "Additional notes: " + (request.notes || "None"),
       "",
       "This is a request only. Please contact the subscriber to confirm availability and delivery details."
@@ -48,6 +49,7 @@ function validateRequest(parameters) {
     frequencyUnit: requiredText(parameters.frequencyUnit, 10),
     startDate: String(parameters.startDate || ""),
     deliveryArea: requiredText(parameters.deliveryArea, 250),
+    deliveryCoordinates: String(parameters.deliveryCoordinates || "").trim(),
     notes: String(parameters.notes || "").trim()
   };
 
@@ -75,6 +77,20 @@ function validateRequest(parameters) {
   }
   if (request.startDate && !/^\d{4}-\d{2}-\d{2}$/.test(request.startDate)) {
     throw new Error("Invalid preferred start date.");
+  }
+  if (request.deliveryCoordinates) {
+    const coordinates = request.deliveryCoordinates.split(",").map(Number);
+    if (
+      request.deliveryCoordinates.length > 50 ||
+      coordinates.length !== 2 ||
+      !coordinates.every(Number.isFinite) ||
+      coordinates[0] < -90 ||
+      coordinates[0] > 90 ||
+      coordinates[1] < -180 ||
+      coordinates[1] > 180
+    ) {
+      throw new Error("Invalid delivery coordinates.");
+    }
   }
   if (!parameters.contactConsent) {
     throw new Error("Contact consent is required.");

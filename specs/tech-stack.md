@@ -3,8 +3,11 @@
 ## Frontend
 
 - HTML5 for semantic page structure
-- CSS for layout, typography, color system, and responsive design
+- Tailwind CSS v4 for responsive layout, spacing, typography, color, effects, and interaction utilities
+- A small component CSS layer for page-specific styles that are not practical as utilities
 - Minimal JavaScript only when needed for interaction or enhancement
+
+Tailwind is compiled at build time for static hosting. Run `npm install` once, then `npm run build:css` to generate `assets/css/tailwind.css`; use `npm run watch:css` while developing.
 
 ## Database
 
@@ -16,6 +19,7 @@
 - The CSA email web app is deployed as **The Epitome Farm CSA Email**, version 1, and is accessible to anyone submitting the public form.
 - The current deployment executes as `rayamjahi.ajay@gmail.com`, which authorized the app to send email. To send from the farm's own Google account instead, redeploy the script while signed in as `theepitomefarmstead@gmail.com`.
 - `CSA_WEB_APP_URL` in `csa.html` is configured with the deployment's `/exec` URL. The form posts in the current tab; Apps Script displays a success or failure confirmation page after processing the request.
+- The CSA location picker previews searched addresses and selected coordinates in an embedded Google Map using a Maps URL (no Maps API key). Browser geolocation requires the visitor's permission and a secure HTTPS site; selected coordinates are included in the email request.
 - Requests are emailed to `theepitomefarmstead@gmail.com`. A request does not promise product availability or finalize a subscription.
 
 ## Design system

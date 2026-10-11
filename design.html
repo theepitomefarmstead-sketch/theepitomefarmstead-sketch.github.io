@@ -7,7 +7,9 @@
   <meta name="description" content="Explore regenerative land-design principles for farms and landscapes in the Kathmandu Valley.">
   <title>Regenerative Land Design | The Epitome Integrated Organic Farm</title>
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
   <style>
+    @layer components {
     :root {
       color-scheme: light;
       --forest: #183d32;
@@ -820,33 +822,34 @@
         transition: none;
       }
     }
+    }
   </style>
 </head>
-<body>
+<body class="bg-[url('../../logo.png')] bg-fixed bg-no-repeat bg-[length:14rem] bg-[position:right_2rem_bottom_2rem]">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="page-shell">
+  <div class="page-shell mx-auto my-0 w-full max-w-[1212px] bg-paper shadow-2xl sm:my-8">
     <header class="site-header">
-        <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+        <a class="brand group" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
           <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
           <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+        <button class="menu-toggle size-12 cursor-pointer rounded-full transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
         </button>
         <nav class="navigation" id="main-navigation" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="design.html" aria-current="page">Design</a>
-          <a href="csa.html">CSA</a>
-          <a href="approach.html">Our approach</a>
-          <a href="platform.html">The platform</a>
-          <a class="nav-cta" href="index.html#vision">Explore the farm</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="index.html">Home</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="about.html">About</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="design.html" aria-current="page">Design</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="csa.html">CSA</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="approach.html">Our approach</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="platform.html">The platform</a>
+          <a class="nav-cta rounded-full bg-forest px-5 py-2.5 text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="index.html#vision">Explore the farm</a>
         </nav>
     </header>
 
     <main id="main">
-      <section class="design-hero" aria-labelledby="design-title">
-        <div class="hero-copy">
+      <section class="design-hero bg-cover bg-center" aria-labelledby="design-title">
+        <div class="hero-copy motion-safe:animate-fade-up">
           <p class="eyebrow">Regenerative land planning</p>
           <h1 id="design-title">Design with the land.</h1>
           <p>Thoughtful farm plans begin by reading the place: its water, terrain, soil, ecology, and the people who care for it.</p>
@@ -871,33 +874,33 @@
           </div>
           <p>Depending on the site and goals, a design can explore these connected elements as part of a phased plan.</p>
         </div>
-        <div class="service-grid">
-          <article class="service-card">
+        <div class="service-grid grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">01</span>
             <h3>Whole-site layout</h3>
             <p>Map zones, access, growing areas, and built spaces around the land's conditions and intended use.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">02</span>
             <h3>Water &amp; terrain</h3>
             <p>Consider slope, runoff, storage, and water movement when planning resilient landscapes.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">03</span>
             <h3>Agroforestry &amp; planting</h3>
             <p>Plan trees, perennial crops, windbreaks, and planting patterns suited to the local context.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">04</span>
             <h3>Soil &amp; fertility</h3>
             <p>Identify opportunities to protect soil, build organic matter, and cycle nutrients within the farm.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">05</span>
             <h3>Integrated food systems</h3>
             <p>Connect gardens, crops, livestock, compost, and local food pathways where appropriate.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <span class="service-number">06</span>
             <h3>Practical phasing</h3>
             <p>Organize ideas into manageable steps that can be adapted as the land and project change.</p>
@@ -911,20 +914,20 @@
           <h2 id="support-title">Support can continue beyond the drawing.</h2>
           <p>Implementation needs depend on the land, available resources, and the people involved. Possible next steps can be scoped to fit the project.</p>
         </div>
-        <div class="support-grid">
-          <article class="support-card">
+        <div class="support-grid grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <article class="support-card rounded-2xl border border-forest/10 bg-white/60 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             <h3>Site assessment</h3>
             <p>Walk the land and record conditions, opportunities, and questions to guide planning.</p>
           </article>
-          <article class="support-card">
+          <article class="support-card rounded-2xl border border-forest/10 bg-white/60 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             <h3>Implementation guidance</h3>
             <p>Break selected design priorities into clear, practical steps.</p>
           </article>
-          <article class="support-card">
+          <article class="support-card rounded-2xl border border-forest/10 bg-white/60 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             <h3>Knowledge sharing</h3>
             <p>Help farmers and project teams understand the reasoning behind design choices.</p>
           </article>
-          <article class="support-card">
+          <article class="support-card rounded-2xl border border-forest/10 bg-white/60 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             <h3>Follow-up learning</h3>
             <p>Review observations and update plans as the site responds and conditions evolve.</p>
           </article>
@@ -937,7 +940,7 @@
           <h2 id="audience-title">For people caring for land and livelihoods.</h2>
           <p>Land planning is most useful when it reflects the needs of the people who will steward, work, and learn from the landscape.</p>
         </div>
-        <ul class="audience-list">
+        <ul class="audience-list grid grid-cols-1 gap-3 sm:grid-cols-2">
           <li>Farmers &amp; growers</li>
           <li>Landowners</li>
           <li>Community groups</li>
@@ -951,7 +954,7 @@
         <p class="section-kicker">Start with the place</p>
         <h2 id="next-step-title">Every landscape has its own story.</h2>
         <p>Explore how our farm connects regenerative practice, local food, and long-term land care.</p>
-        <a class="button" href="approach.html">Explore our approach <span aria-hidden="true">→</span></a>
+        <a class="button transition duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="approach.html">Explore our approach <span aria-hidden="true">→</span></a>
       </section>
     </main>
 

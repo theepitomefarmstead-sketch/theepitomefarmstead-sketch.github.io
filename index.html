@@ -7,7 +7,9 @@
   <meta name="description" content="The Epitome Integrated Organic Farm is a regenerative, permaculture-based farm project in Kathmandu Valley, building resilient local food systems.">
   <title>The Epitome Integrated Organic Farm | Regeneration for Generations</title>
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
   <style>
+    @layer components {
     :root {
       color-scheme: light;
       --forest: #183d32;
@@ -1862,47 +1864,48 @@
         transition-duration: 0.01ms !important;
       }
     }
+    }
   </style>
 </head>
-<body>
+<body class="bg-[url('../../logo.png')] bg-fixed bg-no-repeat bg-[length:14rem] bg-[position:right_2rem_bottom_2rem]">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="page-shell">
+  <div class="page-shell mx-auto my-0 w-full max-w-[1212px] overflow-clip bg-paper shadow-2xl sm:my-8">
     <header class="site-header">
-        <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+        <a class="brand group" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
           <span class="brand-mark" aria-hidden="true">
-            <img src="logo.png" alt="The Epitome Integrated Organic Farm logo">
+            <img class="transition duration-300 group-hover:scale-105 group-hover:drop-shadow-lg" src="logo.png" alt="The Epitome Integrated Organic Farm logo">
           </span>
           <span class="brand-name">
             <span>The Epitome</span>
             <span>Integrated Organic Farm</span>
           </span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <button class="menu-toggle size-12 cursor-pointer rounded-full transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
           </svg>
         </button>
         <nav class="navigation" id="main-navigation" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="design.html">Design</a>
-          <a href="csa.html">CSA</a>
-          <a href="approach.html">Our approach</a>
-          <a href="platform.html">The platform</a>
-          <a class="nav-cta" href="index.html#vision">Explore the farm</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="index.html">Home</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="about.html">About</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="design.html">Design</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="csa.html">CSA</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="approach.html">Our approach</a>
+          <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="platform.html">The platform</a>
+          <a class="nav-cta rounded-full bg-forest px-5 py-2.5 text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="index.html#vision">Explore the farm</a>
         </nav>
     </header>
 
     <main id="main">
       <section class="hero-panel" aria-labelledby="hero-title">
-        <div class="hero-body">
+        <div class="hero-body grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
           <div class="hero-copy">
             <p class="eyebrow">REGENERATIVE • PERMACULTURE • COMMUNITY</p>
             <h1 id="hero-title">Regeneration for <span class="accent">generations.</span></h1>
             <p class="hero-subtitle">The Epitome Integrated Organic Farm is a permaculture-based farm project growing toward resilient local food systems, healthy land, and a stronger community.</p>
-            <div class="hero-actions">
-              <a class="button" href="#vision">Explore Our Farm <span aria-hidden="true">→</span></a>
-              <a class="button button--secondary" href="#approach">Watch Our Story</a>
+            <div class="hero-actions flex flex-wrap items-center gap-4">
+              <a class="button transition duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="#vision">Explore Our Farm <span aria-hidden="true">→</span></a>
+              <a class="button button--secondary transition duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="#approach">Watch Our Story</a>
             </div>
           </div>
           <div class="hero-visual" aria-hidden="true">
@@ -1913,29 +1916,29 @@
         </div>
       </section>
 
-      <div class="feature-grid" aria-label="Farm focus areas">
-        <article class="feature-card">
+      <div class="feature-grid grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4" aria-label="Farm focus areas">
+        <article class="feature-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg motion-safe:animate-fade-up">
           <div class="feature-icon">✿</div>
           <h3>Regenerative Agriculture</h3>
           <p>Restoring soil, water, and biodiversity through practical regenerative systems.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg motion-safe:animate-fade-up">
           <div class="feature-icon">🐔</div>
           <h3>Integrated Farming</h3>
           <p>Crops, livestock, compost, and natural cycles working together for resilience.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg motion-safe:animate-fade-up">
           <div class="feature-icon">👥</div>
           <h3>Community &amp; CSA</h3>
           <p>Shared food access and community engagement built around healthy local living.</p>
           <a href="csa.html">Join the CSA</a>
         </article>
-        <article class="feature-card">
+        <article class="feature-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg motion-safe:animate-fade-up">
           <div class="feature-icon">❔</div>
           <h3>Learning &amp; Farm Visits</h3>
           <p>Hands-on experiences to share regenerative knowledge and practical action.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card rounded-2xl border border-forest/10 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg motion-safe:animate-fade-up">
           <div class="feature-icon">⌂</div>
           <h3>Farm Stay &amp; Retreats</h3>
           <p>Rest, connection, and purposeful learning in a living regenerative landscape.</p>
@@ -1943,15 +1946,15 @@
       </div>
 
       <section class="impact" id="vision" aria-labelledby="vision-title">
-        <div class="impact-visual" aria-hidden="true"></div>
+        <div class="impact-visual relative overflow-hidden rounded-3xl bg-cover bg-center shadow-xl" aria-hidden="true"></div>
         <div class="impact-copy">
           <p class="section-kicker">Our Impact</p>
           <h2 id="vision-title">Growing a healthier food system</h2>
-          <div class="impact-stats">
-            <div class="stat-pill"><strong>6+</strong><span>Farm Land</span></div>
-            <div class="stat-pill"><strong>100+</strong><span>Chickens</span></div>
-            <div class="stat-pill"><strong>30+</strong><span>CSA Members</span></div>
-            <div class="stat-pill"><strong>15+</strong><span>Crop Varieties</span></div>
+          <div class="impact-stats grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="stat-pill rounded-xl border border-white/10 shadow-md"><strong>6+</strong><span>Farm Land</span></div>
+            <div class="stat-pill rounded-xl border border-white/10 shadow-md"><strong>100+</strong><span>Chickens</span></div>
+            <div class="stat-pill rounded-xl border border-white/10 shadow-md"><strong>30+</strong><span>CSA Members</span></div>
+            <div class="stat-pill rounded-xl border border-white/10 shadow-md"><strong>15+</strong><span>Crop Varieties</span></div>
           </div>
         </div>
         <div class="impact-side mission-card">
@@ -1959,7 +1962,7 @@
           <h3>Regeneration for Generations</h3>
           <p>We are building a regenerative and integrated organic farm in the Kathmandu Valley — a model that nurtures soil, grows healthy food, and strengthens community wellbeing.</p>
           <a class="button" href="#approach">Learn More</a>
-          <div class="mission-ring" aria-label="Core values">
+          <div class="mission-ring grid grid-cols-2 gap-3" aria-label="Core values">
             <div class="ring-item"><span class="ring-blob"></span>Ecological</div>
             <div class="ring-item"><span class="ring-blob"></span>Economic</div>
             <div class="ring-item"><span class="ring-blob"></span>Social</div>
@@ -1976,26 +1979,26 @@
           </div>
           <p>Fresh, organic, and locally grown foods supporting a healthier and more resilient food system.</p>
         </div>
-        <div class="product-grid">
-          <article class="product-card">
+        <div class="product-grid grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="product-card rounded-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:saturate-125">
             <div class="card-copy">
               <h3>Free-range<br>Chicken</h3>
               <a href="#">View All</a>
             </div>
           </article>
-          <article class="product-card">
+          <article class="product-card rounded-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:saturate-125">
             <div class="card-copy">
               <h3>Fresh<br>Vegetables</h3>
               <a href="#">View All</a>
             </div>
           </article>
-          <article class="product-card">
+          <article class="product-card rounded-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:saturate-125">
             <div class="card-copy">
               <h3>Value-added<br>Products</h3>
               <a href="#">View All</a>
             </div>
           </article>
-          <article class="product-card">
+          <article class="product-card rounded-3xl border border-white/20 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:saturate-125">
             <div class="card-copy">
               <h3>Farm<br>Stay</h3>
               <a href="#">View All</a>

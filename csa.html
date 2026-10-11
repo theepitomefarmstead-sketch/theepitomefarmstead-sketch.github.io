@@ -7,7 +7,9 @@
   <meta name="description" content="Request a Community Supported Agriculture subscription from The Epitome Integrated Organic Farm, with a delivery interval that suits you.">
   <title>CSA Subscriptions | The Epitome Integrated Organic Farm</title>
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
   <style>
+    @layer components {
     :root {
       color-scheme: light;
       --forest: #183d32;
@@ -396,6 +398,150 @@
       font-size: 0.78rem;
     }
 
+    .location-field {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .location-field input[readonly] {
+      min-width: 0;
+      background: #f3f5ef;
+    }
+
+    .location-picker-button,
+    .location-search-button,
+    .location-use-button,
+    .location-close-button,
+    .location-current-button {
+      min-height: 48px;
+      padding: 10px 16px;
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      background: var(--forest);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 160ms ease, transform 160ms ease;
+    }
+
+    .location-picker-button:hover,
+    .location-search-button:hover,
+    .location-use-button:hover,
+    .location-current-button:hover {
+      transform: translateY(-1px);
+      background: var(--forest-deep);
+    }
+
+    .location-close-button {
+      border-color: var(--line);
+      background: #fff;
+      color: var(--forest);
+    }
+
+    .location-close-button:hover {
+      background: #f3f5ef;
+    }
+
+    .location-dialog {
+      width: min(720px, calc(100% - 28px));
+      max-width: none;
+      max-height: min(90vh, 820px);
+      padding: clamp(20px, 4vw, 32px);
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--cream);
+      color: var(--ink);
+      box-shadow: 0 24px 80px rgb(16 45 37 / 28%);
+    }
+
+    .location-dialog::backdrop {
+      background: rgb(8 20 16 / 70%);
+      backdrop-filter: blur(3px);
+    }
+
+    .location-dialog h2 {
+      margin: 0 0 6px;
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    .location-dialog-intro {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .location-search {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .location-search input {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: 11px 13px;
+      border: 1px solid #cfd2c6;
+      border-radius: 9px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .location-dialog-status {
+      min-height: 1.5em;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .location-map {
+      display: block;
+      width: 100%;
+      height: clamp(220px, 42vh, 360px);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #e8eddf;
+    }
+
+    .location-map-link {
+      display: inline-block;
+      margin-top: 9px;
+      color: var(--forest);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+
+    .location-dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .location-dialog-actions__group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .location-use-button:disabled {
+      transform: none;
+      border-color: #b5baae;
+      background: #b5baae;
+      cursor: not-allowed;
+    }
+
     .privacy-note {
       margin: 24px 0;
       padding: 14px 16px;
@@ -652,6 +798,24 @@
         gap: 17px;
       }
 
+      .location-field {
+        grid-template-columns: 1fr;
+      }
+
+      .location-search {
+        grid-template-columns: 1fr;
+      }
+
+      .location-dialog-actions {
+        flex-direction: column-reverse;
+      }
+
+      .location-dialog-actions__group,
+      .location-dialog-actions__group button,
+      .location-dialog-actions > button {
+        width: 100%;
+      }
+
       .field--wide {
         grid-column: auto;
       }
@@ -685,33 +849,34 @@
         transition: none;
       }
     }
+    }
   </style>
 </head>
-<body>
+<body class="bg-[url('../../logo.png')] bg-fixed bg-no-repeat bg-[length:14rem] bg-[position:right_2rem_bottom_2rem]">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="page-shell">
+  <div class="page-shell mx-auto my-0 w-full max-w-[1212px] overflow-clip bg-paper shadow-2xl sm:my-8">
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+      <a class="brand group" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
         <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
         <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
       </a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+      <button class="menu-toggle size-12 cursor-pointer rounded-full transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+        <svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
       </button>
       <nav class="navigation" id="main-navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="design.html">Design</a>
-        <a href="csa.html" aria-current="page">CSA</a>
-        <a href="approach.html">Our approach</a>
-        <a href="platform.html">The platform</a>
-        <a class="nav-cta" href="#subscribe">Subscribe</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="index.html">Home</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="about.html">About</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="design.html">Design</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="csa.html" aria-current="page">CSA</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="approach.html">Our approach</a>
+        <a class="transition-colors duration-200 hover:bg-forest/5 focus-visible:outline-2 focus-visible:outline-clay" href="platform.html">The platform</a>
+        <a class="nav-cta rounded-full bg-forest px-5 py-2.5 text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay" href="#subscribe">Subscribe</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="csa-hero" aria-labelledby="csa-title">
-        <div class="hero-copy">
+      <section class="csa-hero bg-cover bg-center" aria-labelledby="csa-title">
+        <div class="hero-copy motion-safe:animate-fade-up">
           <p class="eyebrow">Community supported agriculture</p>
           <h1 id="csa-title">Good food, in your rhythm.</h1>
           <p>Choose farm products and tell us how often you would like to receive them. We’ll follow up to confirm availability and delivery details.</p>
@@ -724,27 +889,61 @@
         <p>Select a product, set the quantity, and choose a delivery interval in days, weeks, or months. Your request is not confirmed until the farm team contacts you.</p>
       </section>
 
-      <section class="subscription-card" id="subscribe" aria-labelledby="form-title">
+      <section class="interval-guide mx-auto my-8 w-[min(790px,calc(100%-40px))] rounded-3xl border border-forest/10 bg-white/60 p-5 shadow-lg backdrop-blur-sm sm:p-8" aria-labelledby="interval-title">
+        <h2 class="mb-3 font-display text-2xl font-semibold tracking-tight text-forest" id="interval-title">Choose a delivery rhythm</h2>
+        <p class="mb-4 text-sm text-muted">Use days, weeks, or months to set an interval that works for your household.</p>
+        <div class="overflow-x-auto rounded-xl border border-forest/10">
+          <table class="w-full min-w-[420px] border-collapse text-left text-sm">
+            <caption class="sr-only">Delivery interval units and examples</caption>
+            <thead class="bg-forest text-cream">
+              <tr>
+                <th class="px-4 py-3 font-semibold" scope="col">Unit</th>
+                <th class="px-4 py-3 font-semibold" scope="col">Example</th>
+                <th class="px-4 py-3 font-semibold" scope="col">Form setting</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-forest/10 bg-white/80">
+              <tr class="transition-colors hover:bg-paper">
+                <th class="px-4 py-3 font-medium text-forest" scope="row">Days</th>
+                <td class="px-4 py-3 text-muted">Every 7 days</td>
+                <td class="px-4 py-3 text-muted">1–365 days</td>
+              </tr>
+              <tr class="transition-colors hover:bg-paper">
+                <th class="px-4 py-3 font-medium text-forest" scope="row">Weeks</th>
+                <td class="px-4 py-3 text-muted">Every 2 weeks</td>
+                <td class="px-4 py-3 text-muted">1–52 weeks</td>
+              </tr>
+              <tr class="transition-colors hover:bg-paper">
+                <th class="px-4 py-3 font-medium text-forest" scope="row">Months</th>
+                <td class="px-4 py-3 text-muted">Every 1 month</td>
+                <td class="px-4 py-3 text-muted">1–12 months</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="subscription-card rounded-3xl border border-forest/10 shadow-xl" id="subscribe" aria-labelledby="form-title">
         <h2 id="form-title">Request a CSA subscription</h2>
         <p class="form-intro">Share your preferences and we’ll get back to you about the next steps.</p>
 
         <form id="csa-form" method="post">
-          <div class="form-grid">
+          <div class="form-grid grid grid-cols-1 gap-5 md:grid-cols-2">
             <div class="field">
               <label for="name">Your name</label>
-              <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+              <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
             </div>
             <div class="field">
               <label for="email">Email address</label>
-              <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+              <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
             </div>
             <div class="field">
               <label for="phone">Phone number</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required>
+              <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required>
             </div>
             <div class="field">
               <label for="product">Product of interest</label>
-              <select id="product" name="product" required>
+              <select class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="product" name="product" required>
                 <option value="" selected disabled>Select a product</option>
                 <option value="Seasonal vegetables">Seasonal vegetables</option>
                 <option value="Free-range chicken">Free-range chicken</option>
@@ -754,14 +953,14 @@
             </div>
             <div class="field">
               <label for="quantity">Quantity per delivery</label>
-              <input id="quantity" name="quantity" type="number" min="1" max="99" step="1" value="1" required>
+              <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="quantity" name="quantity" type="number" min="1" max="99" step="1" value="1" required>
               <p class="field-hint">We’ll confirm available sizes and units with you.</p>
             </div>
             <div class="frequency-field">
               <span class="frequency-label">How often would you like delivery?</span>
               <div class="frequency-control">
-                <input id="frequency" name="frequency" type="number" min="1" max="365" step="1" value="1" aria-label="Delivery interval amount" required>
-                <select id="frequency-unit" name="frequencyUnit" aria-label="Delivery interval unit" required>
+                <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="frequency" name="frequency" type="number" min="1" max="365" step="1" value="1" aria-label="Delivery interval amount" required>
+                <select class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="frequency-unit" name="frequencyUnit" aria-label="Delivery interval unit" required>
                   <option value="weeks" selected>week(s)</option>
                   <option value="days">day(s)</option>
                   <option value="months">month(s)</option>
@@ -771,15 +970,20 @@
             </div>
             <div class="field">
               <label for="start-date">Preferred start date</label>
-              <input id="start-date" name="startDate" type="date">
+              <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="start-date" name="startDate" type="date">
             </div>
             <div class="field">
-              <label for="delivery-area">Delivery area or pickup preference</label>
-              <input id="delivery-area" name="deliveryArea" type="text" autocomplete="street-address" maxlength="250" placeholder="Area or preferred pickup location" required>
+              <label for="delivery-area">Delivery address or pickup preference</label>
+              <div class="location-field">
+                <input class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="delivery-area" name="deliveryArea" type="text" maxlength="250" placeholder="Choose a delivery location" aria-describedby="delivery-location-hint" readonly required>
+                <button class="location-picker-button" id="open-location-picker" type="button" aria-haspopup="dialog" aria-controls="delivery-location-dialog">Choose location</button>
+              </div>
+              <input id="delivery-coordinates" name="deliveryCoordinates" type="hidden">
+              <p class="field-hint" id="delivery-location-hint">Search an address or share your current location. Your selection will appear on Google Maps.</p>
             </div>
             <div class="field field--wide">
               <label for="notes">Anything else we should know? <span>(optional)</span></label>
-              <textarea id="notes" name="notes" maxlength="1000" placeholder="Product preferences, questions, or delivery notes"></textarea>
+              <textarea class="transition focus:border-forest focus:ring-2 focus:ring-leaf/30 focus:outline-none" id="notes" name="notes" maxlength="1000" placeholder="Product preferences, questions, or delivery notes"></textarea>
             </div>
           </div>
 
@@ -798,7 +1002,7 @@
           </div>
 
           <div class="form-actions">
-            <button class="submit-button" id="submit-button" type="submit" disabled>Request subscription</button>
+            <button class="submit-button transition duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay active:translate-y-0 disabled:hover:translate-y-0" id="submit-button" type="submit" disabled>Request subscription</button>
             <p class="form-status" id="form-status" role="status" aria-live="polite">Online requests are not connected yet. The farm team needs to configure the email endpoint before submissions can be sent.</p>
           </div>
         </form>
@@ -806,10 +1010,30 @@
       <p class="delivery-note">Product range, pricing, delivery schedule, and availability will be confirmed directly by the farm team.</p>
     </main>
 
+    <dialog class="location-dialog" id="delivery-location-dialog" aria-labelledby="location-dialog-title" aria-describedby="location-dialog-description">
+      <h2 id="location-dialog-title">Choose your delivery location</h2>
+      <p class="location-dialog-intro" id="location-dialog-description">Search for an address or use your device’s current location. The address or coordinates are sent to Google Maps for the preview and added to your farm request only after you choose Use this location and submit the form.</p>
+      <form class="location-search" id="location-search-form">
+        <label class="sr-only" for="location-address">Delivery address or place</label>
+        <input id="location-address" type="text" autocomplete="street-address" maxlength="250" placeholder="Enter an address or place">
+        <button class="location-search-button" type="submit">Search address</button>
+      </form>
+      <p class="location-dialog-status" id="location-dialog-status" role="status" aria-live="polite">Search an address to see it on the map, or use your current location.</p>
+      <iframe class="location-map" id="location-map" title="Google Map preview of the selected delivery location" loading="lazy" allowfullscreen></iframe>
+      <a class="location-map-link" id="open-google-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Kathmandu%20Valley%2C%20Nepal" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+      <div class="location-dialog-actions">
+        <div class="location-dialog-actions__group">
+          <button class="location-current-button" id="use-current-location" type="button">Use current location</button>
+          <button class="location-close-button" id="close-location-picker" type="button">Cancel</button>
+        </div>
+        <button class="location-use-button" id="confirm-location" type="button" disabled>Use this location</button>
+      </div>
+    </dialog>
+
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <span class="footer-brand">The Epitome Integrated Organic Farm</span>
-        <p class="footer-note">Regenerative agriculture · Integrated farming · Kathmandu Valley, Nepal</p>
+        <p class="footer-note text-left sm:text-right">Regenerative agriculture · Integrated farming · Kathmandu Valley, Nepal</p>
       </div>
     </footer>
   </div>
@@ -824,7 +1048,107 @@
     const formStatus = document.querySelector("#form-status");
     const frequency = document.querySelector("#frequency");
     const frequencyUnit = document.querySelector("#frequency-unit");
+    const locationDialog = document.querySelector("#delivery-location-dialog");
+    const locationPickerButton = document.querySelector("#open-location-picker");
+    const deliveryArea = document.querySelector("#delivery-area");
+    const deliveryCoordinates = document.querySelector("#delivery-coordinates");
+    const locationSearchForm = document.querySelector("#location-search-form");
+    const locationAddress = document.querySelector("#location-address");
+    const locationMap = document.querySelector("#location-map");
+    const openGoogleMapsLink = document.querySelector("#open-google-maps");
+    const locationStatus = document.querySelector("#location-dialog-status");
+    const confirmLocationButton = document.querySelector("#confirm-location");
     let previousScrollY = window.scrollY;
+    let pendingLocation = null;
+
+    const setMapLocation = (query) => {
+      locationMap.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+      openGoogleMapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    };
+
+    locationPickerButton.addEventListener("click", () => {
+      pendingLocation = null;
+      confirmLocationButton.disabled = true;
+      locationAddress.value = deliveryCoordinates.value ? "" : deliveryArea.value;
+      const currentLocation = deliveryCoordinates.value || deliveryArea.value || "Kathmandu Valley, Nepal";
+      setMapLocation(currentLocation);
+      locationStatus.textContent = deliveryArea.value
+        ? "Your saved location is shown on the map. Search another address or choose your current location."
+        : "Search an address to see it on the map, or use your current location.";
+      locationDialog.showModal();
+      locationAddress.focus();
+    });
+
+    locationSearchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const address = locationAddress.value.trim();
+      if (!address) {
+        locationStatus.textContent = "Enter an address or place to search.";
+        locationAddress.focus();
+        return;
+      }
+
+      pendingLocation = { address, coordinates: "" };
+      confirmLocationButton.disabled = false;
+      setMapLocation(address);
+      locationStatus.textContent = "Review the address on the map, then choose Use this location to add it to your request.";
+    });
+
+    document.querySelector("#use-current-location").addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        locationStatus.textContent = "This browser does not support location sharing. Search for your address instead.";
+        return;
+      }
+
+      locationStatus.textContent = "Finding your current location…";
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          const latitude = coords.latitude.toFixed(6);
+          const longitude = coords.longitude.toFixed(6);
+          const coordinates = `${latitude}, ${longitude}`;
+          pendingLocation = {
+            address: `Current location (${coordinates})`,
+            coordinates
+          };
+          locationAddress.value = "";
+          confirmLocationButton.disabled = false;
+          setMapLocation(coordinates);
+          locationStatus.textContent = "Your current location is shown on the map. Choose Use this location to add it to your request.";
+        },
+        (error) => {
+          if (error.code === 1) {
+            locationStatus.textContent = "Location permission was denied. Allow location access in your browser or search for your address.";
+          } else if (error.code === 2) {
+            locationStatus.textContent = "Your location could not be determined. Try again or search for your address.";
+          } else if (error.code === 3) {
+            locationStatus.textContent = "Finding your location took too long. Try again or search for your address.";
+          } else {
+            locationStatus.textContent = "Your location could not be found. Search for your address instead.";
+          }
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 }
+      );
+    });
+
+    confirmLocationButton.addEventListener("click", () => {
+      if (!pendingLocation) return;
+      deliveryArea.value = pendingLocation.address;
+      deliveryCoordinates.value = pendingLocation.coordinates;
+      locationDialog.close();
+      locationPickerButton.focus();
+    });
+
+    document.querySelector("#close-location-picker").addEventListener("click", () => {
+      locationDialog.close();
+    });
+
+    locationDialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        locationDialog.close();
+        locationPickerButton.focus();
+      }
+    });
 
     const updateFrequencyLimit = () => {
       const maximum = frequencyUnit.value === "days" ? 365 : frequencyUnit.value === "weeks" ? 52 : 12;
