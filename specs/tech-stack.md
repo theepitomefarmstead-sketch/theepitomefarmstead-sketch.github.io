@@ -44,7 +44,7 @@ Tailwind is compiled at build time for static hosting. Run `npm install` once, t
 
 - Keep the site lightweight and easy to maintain
 - Prefer clear structure over complex CMS dependencies
-- Use simple pages for landing, about, design services, CSA subscriptions, approach, and platform sections
+- Use simple pages for landing, about, projects, design services, CSA subscriptions, approach, and platform sections
 
 ## Quality bar
 
