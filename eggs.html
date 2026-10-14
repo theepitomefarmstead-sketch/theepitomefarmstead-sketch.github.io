@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Meet the farm-raised eggs and poultry at The Epitome Integrated Organic Farm in Kathmandu Valley, Nepal.">
+  <title>Farm Eggs | The Epitome Integrated Organic Farm</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183d32;
+      --forest-deep: #102d25;
+      --leaf: #526c45;
+      --clay: #c76e48;
+      --sun: #e8bc67;
+      --paper: #f5f2e9;
+      --cream: #fffdf7;
+      --ink: #242820;
+      --muted: #666b5f;
+      --line: #deddd0;
+    }
+
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #0d1212;
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .skip-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      padding: 10px 14px;
+      transform: translateY(-150%);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--forest);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .page-shell {
+      max-width: 1212px;
+      margin: 32px auto;
+      overflow: clip;
+      background: var(--paper);
+      box-shadow: 0 30px 60px rgb(0 0 0 / 24%);
+    }
+
+    .wrap { width: min(1120px, calc(100% - 56px)); margin: 0 auto; }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      min-height: 88px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgb(24 61 50 / 12%);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--forest);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgb(24 61 50 / 10%);
+    }
+
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+    .brand-name {
+      display: grid;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .brand-name span:last-child {
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-size: 0.59rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg { width: 24px; height: 24px; }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2vw, 26px);
+    }
+
+    .navigation a {
+      color: #49564a;
+      font-size: 0.87rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .navigation a:hover,
+    .navigation a:focus-visible,
+    .navigation a[aria-current="page"] { color: var(--clay); }
+
+    .navigation .nav-cta {
+      padding: 10px 17px;
+      border-radius: 99px;
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .navigation .nav-cta:hover,
+    .navigation .nav-cta:focus-visible { background: var(--forest-deep); color: #fff; }
+
+    .hero {
+      display: grid;
+      min-height: 650px;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 44px;
+      padding: 72px 0 82px;
+    }
+
+    .hero-copy { position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 21px;
+      color: var(--leaf);
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before { width: 27px; height: 1px; background: var(--clay); content: ""; }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1,
+    h2 {
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+    }
+
+    h1 {
+      max-width: 550px;
+      margin-bottom: 21px;
+      font-size: clamp(3.5rem, 7vw, 6.6rem);
+      letter-spacing: -0.075em;
+      line-height: 0.91;
+    }
+
+    h1 em { color: var(--clay); font-weight: 500; }
+
+    .hero-intro {
+      max-width: 450px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.13rem);
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+
+    .button {
+      display: inline-flex;
+      min-height: 49px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); background: var(--forest-deep); }
+
+    .button--secondary { background: transparent; color: var(--forest); }
+    .button--secondary:hover { background: rgb(24 61 50 / 6%); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+      padding: 15px 18px 26px 35px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0 15px 0 40px;
+      overflow: hidden;
+      border-radius: 48% 48% 22px 22px;
+      background: #71815b;
+    }
+
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+
+    .hero-photo::after {
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(transparent, rgb(16 45 37 / 54%));
+      content: "";
+    }
+
+    .photo-caption {
+      position: absolute;
+      right: 35px;
+      bottom: 35px;
+      left: 60px;
+      z-index: 1;
+      color: white;
+    }
+
+    .photo-caption span {
+      display: block;
+      color: #f4dfaa;
+      font-size: 0.68rem;
+      font-weight: 750;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .photo-caption strong {
+      display: block;
+      margin-top: 5px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .hero-stamp {
+      position: absolute;
+      top: 47px;
+      left: 0;
+      display: grid;
+      width: 112px;
+      height: 112px;
+      place-content: center;
+      border: 1px solid rgb(24 61 50 / 15%);
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--forest);
+      text-align: center;
+      transform: rotate(-9deg);
+    }
+
+    .hero-stamp span { font-size: 0.62rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
+    .hero-stamp strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; font-weight: 600; }
+
+    .egg-mark {
+      position: absolute;
+      right: 0;
+      bottom: 78px;
+      display: grid;
+      width: 78px;
+      height: 96px;
+      place-items: center;
+      border: 5px solid var(--paper);
+      border-radius: 52% 48% 50% 50% / 64% 64% 36% 36%;
+      background: #f0dba7;
+      box-shadow: 0 9px 25px rgb(16 45 37 / 18%);
+      transform: rotate(13deg);
+    }
+
+    .egg-mark::after {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #d6983c;
+      box-shadow: inset 0 2px 5px rgb(103 66 22 / 15%);
+      content: "";
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-item {
+      display: flex;
+      min-height: 99px;
+      align-items: center;
+      gap: 13px;
+      padding: 19px 24px;
+    }
+
+    .trust-item + .trust-item { border-left: 1px solid var(--line); }
+
+    .trust-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: #e6eadc;
+      color: var(--forest);
+    }
+
+    .trust-icon svg { width: 21px; height: 21px; }
+    .trust-item strong { display: block; color: var(--forest); font-size: 0.91rem; line-height: 1.2; }
+    .trust-item span:last-child { color: var(--muted); font-size: 0.77rem; }
+
+    .section { padding: 100px 0; }
+
+    .section-heading { max-width: 660px; margin: 0 auto 44px; text-align: center; }
+
+    .section-heading .eyebrow { justify-content: center; }
+
+    .section-heading h2 {
+      margin-bottom: 13px;
+      font-size: clamp(2.5rem, 4.9vw, 4.2rem);
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+
+    .farm-story { background: var(--cream); }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .story-card {
+      position: relative;
+      min-height: 284px;
+      padding: 31px 27px 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #f9f7ef;
+    }
+
+    .story-card:nth-child(2) { background: #eef0e7; }
+    .story-card:nth-child(3) { background: #f4e9d8; }
+
+    .story-number {
+      color: rgb(24 61 50 / 18%);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 4.3rem;
+      line-height: 1;
+    }
+
+    .story-icon {
+      position: absolute;
+      top: 32px;
+      right: 26px;
+      display: grid;
+      width: 62px;
+      height: 62px;
+      place-items: center;
+      border-radius: 50%;
+      background: rgb(255 253 247 / 72%);
+      color: var(--forest);
+    }
+
+    .story-icon svg { width: 34px; height: 34px; }
+    .story-card h3 { margin: 30px 0 9px; color: var(--forest); font-family: Georgia, "Times New Roman", serif; font-size: 1.42rem; font-weight: 500; }
+    .story-card p { max-width: 280px; margin-bottom: 0; color: var(--muted); font-size: 0.91rem; }
+
+    .farm-note {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 850px;
+      margin: 29px auto 0;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: #e8ebdf;
+      color: var(--forest);
+      font-size: 0.85rem;
+    }
+
+    .farm-note svg { width: 22px; height: 22px; flex: 0 0 22px; }
+
+    .field-section { background: var(--forest); color: white; }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 58px;
+    }
+
+    .field-copy .eyebrow { color: #d9dfc9; }
+    .field-copy h2 { margin-bottom: 17px; color: var(--cream); font-size: clamp(2.5rem, 4.8vw, 4.2rem); letter-spacing: -0.055em; line-height: 0.98; }
+    .field-copy > p:not(.eyebrow) { max-width: 460px; margin-bottom: 0; color: #d0d6c9; }
+
+    .practice-list { display: grid; gap: 0; margin-top: 27px; }
+
+    .practice-item {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-top: 1px solid rgb(255 255 255 / 17%);
+    }
+
+    .practice-item span:first-child {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 28%);
+      border-radius: 50%;
+      color: #e8bc67;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .practice-item strong { display: block; color: white; font-size: 0.88rem; }
+    .practice-item small { color: #c0cbbb; font-size: 0.78rem; }
+
+    .field-photo {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+      border-radius: 48% 48% 18px 18px;
+      background: #87936f;
+    }
+
+    .field-photo img { width: 100%; height: 100%; min-height: 470px; object-fit: cover; object-position: center; }
+
+    .field-photo figcaption {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      left: 18px;
+      padding: 11px 14px;
+      border-radius: 8px;
+      background: rgb(16 45 37 / 82%);
+      color: white;
+      font-size: 0.77rem;
+    }
+
+    .egg-guide { background: var(--paper); }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .egg-infographic {
+      position: relative;
+      display: grid;
+      min-height: 386px;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at 50% 105%, rgb(82 108 69 / 16%), transparent 58%),
+        #ebe9dc;
+    }
+
+    .egg-infographic::before,
+    .egg-infographic::after {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgb(24 61 50 / 13%);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .egg-infographic::after { width: 250px; height: 250px; }
+
+    .egg-cluster { position: relative; z-index: 1; display: flex; align-items: end; gap: 10px; }
+
+    .egg-shape {
+      display: grid;
+      width: 77px;
+      height: 101px;
+      place-items: center;
+      border: 1px solid rgb(104 82 41 / 12%);
+      border-radius: 52% 48% 50% 50% / 64% 64% 36% 36%;
+      background: #fffdf3;
+      box-shadow: 0 10px 20px rgb(54 48 32 / 12%);
+    }
+
+    .egg-shape:nth-child(2) { width: 92px; height: 119px; background: #e5c98c; transform: rotate(-7deg); }
+    .egg-shape:nth-child(3) { background: #f8f4e7; transform: rotate(8deg); }
+
+    .egg-shape::after {
+      width: 25px;
+      height: 25px;
+      border: 5px solid rgb(255 255 255 / 55%);
+      border-radius: 50%;
+      background: #d49435;
+      box-shadow: inset 0 1px 4px rgb(72 45 13 / 18%);
+      content: "";
+    }
+
+    .infographic-label {
+      position: absolute;
+      z-index: 2;
+      padding: 7px 11px;
+      border: 1px solid rgb(24 61 50 / 11%);
+      border-radius: 99px;
+      background: var(--cream);
+      color: var(--forest);
+      font-size: 0.67rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .infographic-label--top { top: 31px; left: 28px; }
+    .infographic-label--right { top: 96px; right: 22px; }
+    .infographic-label--bottom { bottom: 30px; left: 50%; transform: translateX(-50%); }
+
+    .guide-copy .eyebrow { margin-bottom: 15px; }
+    .guide-copy h2 { margin-bottom: 17px; font-size: clamp(2.45rem, 4.5vw, 3.8rem); letter-spacing: -0.06em; line-height: 0.98; }
+    .guide-copy > p:not(.eyebrow) { margin-bottom: 20px; color: var(--muted); }
+
+    .detail-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+
+    .detail-list li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; color: #485248; font-size: 0.9rem; }
+
+    .detail-list svg { width: 19px; height: 19px; margin-top: 2px; color: var(--leaf); }
+
+    .contact-band { padding: 62px 0; background: #e8ebdf; }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .contact-inner .eyebrow { margin-bottom: 10px; }
+    .contact-inner h2 { margin-bottom: 7px; font-size: clamp(2.2rem, 4vw, 3.3rem); letter-spacing: -0.05em; line-height: 1; }
+    .contact-inner p:not(.eyebrow) { margin-bottom: 0; color: var(--muted); }
+
+    .site-footer { padding: 30px 0; background: var(--forest-deep); color: #d0d6c9; }
+
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .footer-brand { color: var(--paper); font-family: Georgia, "Times New Roman", serif; font-size: 0.97rem; }
+    .footer-contact { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+    .footer-contact a { color: #d0d6c9; font-size: 0.81rem; text-decoration: none; }
+    .footer-contact a:hover { color: #fff; }
+
+    :focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      .site-header { min-height: 80px; }
+      .menu-toggle { display: inline-flex; }
+      .menu-toggle:hover,
+      .menu-toggle[aria-expanded="true"] { background: #f1f4ef; }
+      .navigation {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid rgb(24 61 50 / 10%);
+        border-radius: 0 0 18px 18px;
+        background: #fff;
+        box-shadow: 0 20px 36px rgb(16 45 37 / 12%);
+      }
+      .navigation.is-open { display: flex; }
+      .navigation a { min-height: 42px; padding: 10px 12px; }
+      .navigation .nav-cta { margin-top: 6px; text-align: center; }
+      .hero { min-height: 560px; gap: 20px; }
+      .hero-visual { min-height: 430px; }
+      .field-grid { gap: 32px; }
+      .field-photo,
+      .field-photo img { min-height: 410px; }
+      .guide-grid { gap: 38px; }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell { margin: 0; box-shadow: none; }
+      .wrap { width: calc(100% - 36px); }
+      .site-header { min-height: 74px; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 42px; height: 42px; flex-basis: 42px; }
+      .brand-name { font-size: 0.94rem; }
+      .brand-name span:last-child { font-size: 0.5rem; letter-spacing: 0.08em; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 50px 0 52px; }
+      h1 { max-width: 500px; font-size: clamp(3.6rem, 15vw, 5.2rem); }
+      .hero-visual { min-height: 430px; margin: 0 8px; }
+      .hero-photo { right: 12px; left: 27px; }
+      .hero-stamp { top: 31px; left: -3px; width: 94px; height: 94px; }
+      .egg-mark { right: -4px; bottom: 67px; width: 64px; height: 82px; }
+      .trust-strip { grid-template-columns: 1fr; }
+      .trust-item { min-height: 77px; padding: 12px 6px; }
+      .trust-item + .trust-item { border-top: 1px solid var(--line); border-left: 0; }
+      .section { padding: 72px 0; }
+      .section-heading { margin-bottom: 30px; }
+      .story-grid { grid-template-columns: 1fr; gap: 12px; }
+      .story-card { min-height: 220px; padding: 24px; }
+      .story-card h3 { margin-top: 19px; }
+      .farm-note { align-items: flex-start; padding: 14px; }
+      .field-grid,
+      .guide-grid { grid-template-columns: 1fr; gap: 34px; }
+      .field-photo,
+      .field-photo img { min-height: 360px; }
+      .egg-infographic { min-height: 320px; }
+      .contact-band { padding: 47px 0; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-contact { flex-direction: column; gap: 6px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,
+      *::before,
+      *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <div class="wrap">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="The Epitome Integrated Organic Farm home">
+          <span class="brand-mark" aria-hidden="true"><img src="logo.png" alt=""></span>
+          <span class="brand-name"><span>The Epitome</span><span>Integrated Organic Farm</span></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="main-navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+        </button>
+        <nav class="navigation" id="main-navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="design.html">Design</a>
+          <a href="csa.html">CSA</a>
+          <a href="eggs.html" aria-current="page">Farm eggs</a>
+          <a href="approach.html">Our approach</a>
+          <a href="platform.html">The platform</a>
+          <a class="nav-cta" href="https://wa.me/9779764599190?text=Hello%20Epitome%2C%20I%27d%20like%20to%20ask%20about%20your%20farm%20eggs." target="_blank" rel="noopener noreferrer">Ask about eggs <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+    </div>
+
+    <main id="main">
+      <section class="wrap hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">From our farm in Kathmandu Valley</p>
+          <h1 id="hero-title">Good eggs begin with <em>good care.</em></h1>
+          <p class="hero-intro">Meet the hens and farm practices behind Epitome eggs. Thoughtful poultry care is part of the bigger picture: a connected, regenerative farm built for generations.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://wa.me/9779764599190?text=Hello%20Epitome%2C%20I%27d%20like%20to%20ask%20about%20your%20farm%20eggs." target="_blank" rel="noopener noreferrer">Ask about egg availability <span aria-hidden="true">↗</span></a>
+            <a class="button button--secondary" href="#our-approach">Our approach <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="photos/chickens.jpg" alt="A rooster and hens among leafy plants at the farm" fetchpriority="high">
+            <div class="photo-caption"><span>The Epitome farm</span><strong>Care for the flock.<br>Care for the land.</strong></div>
+          </div>
+          <div class="hero-stamp" aria-label="Farm-raised eggs"><span>Farm-raised</span><strong>with care</strong></div>
+          <span class="egg-mark" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <div class="wrap trust-strip" aria-label="About Epitome eggs">
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4.6 0 7-3.5 7-8S15.9 3 12 3s-7 5.5-7 10 2.4 8 7 8Z"/><path d="M9 14c1-2 2-3 5-4"/></svg>
+          </span>
+          <span><strong>Farm-raised</strong><span>From our own integrated farm</span></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 14c-4 0-7-2.3-7-6 4 0 7 2.3 7 6Z"/><path d="M12 11c0-4 2.3-7 6-7 0 4-2.3 7-6 7Z"/></svg>
+          </span>
+          <span><strong>Part of a living farm</strong><span>Poultry in a connected system</span></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c3-1 5-3 6-6 1-3 3-5 7-7"/><path d="M6 20h13"/><path d="M14 6c1-2 3-3 6-3 0 3-1 5-3 6"/></svg>
+          </span>
+          <span><strong>Rooted in Nepal</strong><span>Raised in Kathmandu Valley</span></span>
+        </div>
+      </div>
+
+      <section class="section farm-story" id="our-approach" aria-labelledby="story-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Eggs are part of a bigger story</p>
+            <h2 id="story-title">A farm is more than a product.</h2>
+            <p>At Epitome, poultry belongs to an integrated farm system. The way we care for animals, land and resources is connected.</p>
+          </div>
+          <div class="story-grid">
+            <article class="story-card">
+              <span class="story-number" aria-hidden="true">01</span>
+              <span class="story-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 35c8 0 12-6 12-14S26 5 20 5 8 13 8 21s4 14 12 14Z"/><path d="M15 23c2-4 4-6 10-8"/></svg>
+              </span>
+              <h3>Care for the flock</h3>
+              <p>Good food begins with respect for the animals who make it possible. We keep poultry as part of our working farm.</p>
+            </article>
+            <article class="story-card">
+              <span class="story-number" aria-hidden="true">02</span>
+              <span class="story-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 34V16"/><path d="M20 22c-7 0-12-4-12-11 7 0 12 4 12 11Z"/><path d="M20 17c0-7 4-12 11-12 0 7-4 12-11 12Z"/><path d="M12 34h16"/></svg>
+              </span>
+              <h3>Work with nature</h3>
+              <p>Our integrated approach looks for ways farm life can support healthier soil, thoughtful resource use and long-term resilience.</p>
+            </article>
+            <article class="story-card">
+              <span class="story-number" aria-hidden="true">03</span>
+              <span class="story-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16h24v17H8z"/><path d="M6 16 20 6l14 10"/><path d="M15 33V22h10v11"/></svg>
+              </span>
+              <h3>Keep it local</h3>
+              <p>We are a small farm in Kathmandu Valley. Get in touch to learn what eggs are available and how to order from us.</p>
+            </article>
+          </div>
+          <p class="farm-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <span>Egg availability can change with the season and flock. Message us for current details, pricing and pickup or delivery options.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="section field-section" aria-labelledby="field-title">
+        <div class="wrap field-grid">
+          <div class="field-copy">
+            <p class="eyebrow">From the farm, not a factory</p>
+            <h2 id="field-title">Healthy land.<br>Thoughtful animal care.</h2>
+            <p>Our poultry is one part of a farm designed around interdependence. We keep building a place where food, animals and the land can be cared for together.</p>
+            <div class="practice-list" aria-label="Epitome farm principles">
+              <div class="practice-item"><span aria-hidden="true">01</span><span><strong>Integrated farming</strong><small>Livestock is part of a wider farm system.</small></span></div>
+              <div class="practice-item"><span aria-hidden="true">02</span><span><strong>Regenerative thinking</strong><small>Care for soil and resources over the long term.</small></span></div>
+              <div class="practice-item"><span aria-hidden="true">03</span><span><strong>Open conversation</strong><small>Ask us directly about how our eggs are raised.</small></span></div>
+            </div>
+          </div>
+          <figure class="field-photo">
+            <img src="photos/chicken run.jpg" alt="Hens moving through a green outdoor area at the farm" loading="lazy">
+            <figcaption>A glimpse of poultry life at The Epitome Integrated Organic Farm.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section egg-guide" aria-labelledby="guide-title">
+        <div class="wrap guide-grid">
+          <div class="egg-infographic" role="img" aria-label="Illustration of three farm eggs">
+            <span class="infographic-label infographic-label--top">Farm raised</span>
+            <span class="infographic-label infographic-label--right">Epitome eggs</span>
+            <div class="egg-cluster" aria-hidden="true"><span class="egg-shape"></span><span class="egg-shape"></span><span class="egg-shape"></span></div>
+            <span class="infographic-label infographic-label--bottom">From our farm to your table</span>
+          </div>
+          <div class="guide-copy">
+            <p class="eyebrow">Good to know</p>
+            <h2 id="guide-title">Know your eggs. Know your farm.</h2>
+            <p>We want you to feel good about the food you bring home. Here is the simple way to get the details that matter to you.</p>
+            <ul class="detail-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>Ask what egg sizes and quantities are available now.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>Check current pricing and collection or delivery arrangements.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>If feed ingredients or flock practices are important to you, ask us directly and we will share what we know.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-band" aria-labelledby="contact-title">
+        <div class="wrap contact-inner">
+          <div>
+            <p class="eyebrow">A question about our eggs?</p>
+            <h2 id="contact-title">Let's talk farm to table.</h2>
+            <p>Ask about what's available at The Epitome today.</p>
+          </div>
+          <a class="button" href="https://wa.me/9779764599190?text=Hello%20Epitome%2C%20I%27d%20like%20to%20ask%20about%20your%20farm%20eggs." target="_blank" rel="noopener noreferrer">Message us on WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="footer-brand">The Epitome Integrated Organic Farm</span>
+        <nav class="footer-contact" aria-label="Contact the farm">
+          <a href="tel:+9779764599190">Call: 976-4599190</a>
+          <a href="mailto:theepitomefarmstead@gmail.com">Email the farm</a>
+          <a href="https://wa.me/9779764599190" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      navigation.classList.toggle("is-open", !isExpanded);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        navigation.classList.remove("is-open");
+      }
+    });
+  </script>
+</body>
+</html>
